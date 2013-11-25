@@ -17,7 +17,7 @@
 Yii::app()->clientScript->registerCssFile($asset.'/css/foundation.css');		
 Yii::app()->clientScript->registerCssFile($asset.'/css/main_dweling.css');		
 Yii::app()->clientScript->registerCssFile($asset.'/css/form.css');		
-Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');		*/
+Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/	
 ?>
 				  
 									  
@@ -28,7 +28,8 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');		*/
 	<body>
     <header>
         <div class="row">
-            <div class="large-12 small-12 columns social_wrap">
+		<main class="main"><div class="container main-container"><div class="row-fluid main-body">
+            <div class="large-12 small-12 columns social_wrap span12">
             	<ul>
                 	<li><a href="#" class="facebook" title="Facebook">Facebook</a></li>
                     <li><a href="#" class="twitter" title="Twitter">Twitter</a></li>
@@ -36,24 +37,21 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');		*/
                     <li class="last"><a href="#" class="gplus" title="Googleplus">Googleplus</a></li>            
                 </ul>
             </div>
+			</div>
+			</div>
+			</main>
+			
         </div>
         <!-- ***** header row ends here ********** -->   
     </header>	
-		<header>
-		    <div class="header-top-bar"></div>
-
-		    <div class="row-fluid header-middle-bar">
-			    	<?php $this->widget('bootstrap.widgets.TbNavbar', array(
-						'brand' => Yii::app()->name,
-						'fixed' => false,
-						'items' => array(
-							array(
-								'class' => 'bootstrap.widgets.TbMenu',
-								'items' => $this->getCiiMenu()
-							)
-						)
-					)); ?>			      
-					<ul class="row login-wrap clearfix">
+<main class="main"><div class="container main-container"><div class="row-fluid main-body"><div class="span8">
+        	<a class="large-8 small-12 columns logo">
+            	Dwelling
+            </a>
+        </div>
+		<div class="span4">
+            <div class="large-4 small-12 columns header_login">
+            	<ul class="login-wrap clearfix">
                 	<li class="login">
 					<?php $this->widget('zii.widgets.CMenu',array(
 					'items'=>array(
@@ -66,10 +64,58 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');		*/
 					<a href="<?php echo Yii::app()->request->baseUrl; ?>/site/login" class="iframe">Login</a> |</li>
                     <li class="signup"><a href="<?php echo Yii::app()->request->baseUrl; ?>/site/register" class="iframe">Signup</a></li><?php }?>
                 </ul>
-					
-		    </div>		    
+                <div class="clear"></div>
+            
+                
+                <div class="search-wrap">
+                	<form>
+                    <div class="row collapse">
+                    	<div class="small-10 columns"><input type="text" placeholder="Search..." /></div>
+                        <div class="small-2 columns"><a href="#" class="button prefix search-btn">Search</a></div>
+                    </div>
+                    </form>
+                </div>
+                
+            </div>
+		</div>
+            
+        </div>
+    </div>
+	</main>
+		<header>
+
+
+	    
 		</header>
-		
+    <nav>
+    	<div class="row">
+		<main class="main"><div class="container main-container"><div class="row-fluid main-body"><div class="span12">
+        	<div class="large-12 small-12 columns nav-bar">
+		<?php $url = $_SERVER['REQUEST_URI']; 
+		$urlarray=explode("/",$url);
+		$end=$urlarray[count($urlarray)-1];
+		if($end==''){$advice=array('class'=>'active');}else{$advice="";}
+		if($end=='buy'){$buy=array('class'=>'active');}else{$buy="";}
+		if($end=='events'){$events=array('class'=>'active');}else{$events="";}
+		if($end=='about'){$about=array('class'=>'active');}else{$about="";}
+		if($end=='contact'){$contact=array('class'=>'active');}else{$contact="";}
+		?>	
+		<?php $this->widget('zii.widgets.CMenu',array(
+			'items'=>array(
+				array('label'=>'Ask for Advice', 'url'=>array('/'),'linkOptions'=>$advice),
+				array('label'=>'Buy & Sell', 'url'=>array('/site/buy'),'linkOptions'=>$buy),
+				array('label'=>'Events', 'url'=>array('/site/events'),'linkOptions'=>$events),
+				/*array('label'=>'About Us', 'url'=>array('/site/about'),'linkOptions'=>$about),
+				array('label'=>'Contact Us', 'url'=>array('/site/contact'),'linkOptions'=>$contact),*/
+			),
+		)); ?>				
+            </div>
+			</div>
+			</div>
+			</div>
+			</main>
+        </div>
+    </nav>		
 		<main class="main">
 
 		   	<div class="container main-container">
@@ -149,40 +195,7 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');		*/
   '.js><\/script>')*/
   </script>
   
-  <?php
-  /*Yii::app()->clientScript->registerCssFile($asset.'/js/foundation.min.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.alerts.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.clearing.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.cookie.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.dropdown.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.forms.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.joyride.js'); 
-  
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.magellan.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.orbit.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.placeholder.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.reveal.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.section.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.tooltips.js'); 
-
-  Yii::app()->clientScript->registerCssFile($asset.'/js/foundation/foundation.topbar.js'); */
-    
-  
-?>  
   <script>
-    /*$(document).foundation();
-	$(".iframe").colorbox({iframe:true, width:"60%", height:"67%"});*/
+    /*$(document).foundation();*/
+	$(".iframe").colorbox({iframe:true, width:"60%", height:"67%"});
   </script>

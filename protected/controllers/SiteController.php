@@ -457,6 +457,36 @@ class SiteController extends CiiController
 		$this->layout = '//layouts/main';
 		$this->render('register-success');
 	}
+	
+	public function actionBuy()
+	{
+		$this->setPageTitle(Yii::app()->name . ' | Buy & Sell');
+		$this->layout = '//layouts/main';
+		$this->render('buy');
+	}		
+	
+	public function actionEvents()
+	{
+		$this->setPageTitle(Yii::app()->name . ' | Events');
+		$this->layout = '//layouts/main';
+		$this->render('events');
+	}	
+	
+
+
+	public function actionTerms()
+	{
+		$this->setPageTitle(Yii::app()->name . ' | Terms & Conditions');
+		$this->layout = '//layouts/main';
+		$this->render('terms');
+	}		
+	
+	public function actionPrivacy()
+	{
+		$this->setPageTitle(Yii::app()->name . ' | Privacy Policy');
+		$this->layout = '//layouts/main';
+		$this->render('privacy');
+	}	
 
     /**
      * Migrate Action
