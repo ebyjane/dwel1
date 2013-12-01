@@ -44,9 +44,9 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
         </div>
         <!-- ***** header row ends here ********** -->   
     </header>	
-<main class="main"><div class="container main-container"><div class="row-fluid main-body"><div class="span8">
-        	<a class="large-8 small-12 columns logo">
-            	Dwelling
+<div class="container main-container"><div class="row-fluid main-body header-second"><div class="span8">
+        	<a href="#" class="large-8 small-12 columns logo">
+            	Dweling
             </a>
         </div>
 		<div class="span4">
@@ -82,11 +82,7 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
         </div>
     </div>
 	</main>
-		<header>
 
-
-	    
-		</header>
     <nav>
     	<div class="row">
 		<main class="main"><div class="container main-container"><div class="row-fluid main-body"><div class="span12">
@@ -118,7 +114,7 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
     </nav>		
 		<main class="main">
 
-		   	<div class="container main-container">
+		   	<div class="container main-container content-part">
                 <div class="row-fluid main-body">
                     <?php echo $content; ?>
                 </div>
