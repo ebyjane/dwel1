@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2013 at 07:18 AM
+-- Generation Time: Dec 02, 2013 at 05:16 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -37,14 +37,32 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `parent_id`, `name`, `slug`, `created`, `updated`) VALUES
-(1, 1, 'Uncategorized', 'uncategorized', '2013-11-19 11:54:03', '2013-11-19 11:54:03');
+(1, 1, 'Dweling', 'dweling', '2013-11-19 11:54:03', '2013-12-01 21:42:41'),
+(2, 2, 'Education & Development', 'education---development', '2013-12-01 21:43:11', '2013-12-01 21:51:38'),
+(3, 3, 'Product & Services', 'product---services', '2013-12-01 21:43:27', '2013-12-01 21:51:27'),
+(4, 4, 'Sports', 'sports', '2013-12-01 21:43:40', '2013-12-01 21:51:14'),
+(5, 5, 'Health & Beauty', 'health---beauty', '2013-12-01 21:43:52', '2013-12-01 21:51:02'),
+(6, 6, 'Travel & Tourism', 'travel---tourism', '2013-12-01 21:44:02', '2013-12-01 21:50:39'),
+(7, 7, 'Fitness & Style', 'fitness---style', '2013-12-01 21:44:14', '2013-12-01 21:50:47'),
+(8, 8, 'Society & Culture', 'society---culture', '2013-12-01 21:44:26', '2013-12-01 21:49:05'),
+(9, 9, 'Pets', 'pets', '2013-12-01 21:44:40', '2013-12-01 21:48:53'),
+(10, 10, 'News & Events', 'news---events', '2013-12-01 21:44:51', '2013-12-01 21:48:40'),
+(11, 11, 'Finance & Economy', 'finance---economy', '2013-12-01 21:45:08', '2013-12-01 21:48:31'),
+(12, 12, 'Food & Beverage', 'food---beverage', '2013-12-01 21:45:21', '2013-12-01 21:48:22'),
+(13, 13, 'Technology & Gadgets', 'technology---gadgets', '2013-12-01 21:45:32', '2013-12-01 21:48:08'),
+(14, 14, 'Entertainment', 'entertainment', '2013-12-01 21:45:44', '2013-12-01 21:48:01'),
+(15, 15, 'Law & Rules', 'law---rules', '2013-12-01 21:45:54', '2013-12-01 21:47:53'),
+(16, 16, 'Politics & Government', 'politics---government', '2013-12-01 21:46:03', '2013-12-01 21:47:42'),
+(17, 17, 'Relationship and Psychology', 'relationship-and-psychology', '2013-12-01 21:46:13', '2013-12-01 21:47:34'),
+(18, 18, 'Discovery & Entrepreneurship', 'discovery---entrepreneurship', '2013-12-01 21:46:25', '2013-12-01 21:47:27'),
+(19, 19, 'Others', 'others', '2013-12-01 21:46:37', '2013-12-01 21:47:18');
 
 -- --------------------------------------------------------
 
@@ -81,23 +99,23 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `content_id` (`content_id`),
   KEY `user_id` (`user_id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `content_id`, `user_id`, `parent_id`, `comment`, `approved`, `created`, `updated`) VALUES
-(1, 1, 1, 0, 'test comments', -1, '2013-11-19 12:14:34', '2013-11-19 12:22:11'),
-(2, 1, 1, 1, 'test', 1, '2013-11-19 12:24:12', '2013-11-19 12:24:12'),
-(3, 1, 2, 1, 'good one', 1, '2013-11-19 12:50:33', '2013-11-19 12:50:33'),
-(4, 1, 2, 1, 'Wow amazing', 1, '2013-11-19 12:50:50', '2013-11-19 12:50:50'),
-(5, 1, 2, 2, 'testing 1234', 1, '2013-11-19 12:54:49', '2013-11-19 12:54:49'),
-(6, 1, 2, 0, 'What is this all about?', 1, '2013-11-19 12:55:27', '2013-11-19 12:55:27'),
-(7, 2, 1, 0, 'I don''t have any idea. Sorry!!!', 1, '2013-11-19 15:38:12', '2013-11-19 15:38:12'),
-(8, 1, 1, 5, 'iam replying for testing1234', 1, '2013-11-19 16:04:38', '2013-11-19 16:04:38'),
-(9, 1, 1, 8, 'adsadasd', 1, '2013-11-19 16:35:21', '2013-11-19 16:35:21'),
-(10, 2, 1, 0, 'testing', 1, '2013-11-19 16:58:59', '2013-11-19 16:58:59');
+(30, 42, 1, 0, 'First Comment', 1, '2013-12-02 20:08:18', '2013-12-02 20:08:18'),
+(31, 41, 1, 0, 'test comment', 1, '2013-12-02 20:12:25', '2013-12-02 20:12:25'),
+(32, 43, 1, 0, 'test comment', 1, '2013-12-02 20:13:53', '2013-12-02 20:13:53'),
+(33, 44, 1, 0, 'test', 1, '2013-12-02 20:15:41', '2013-12-02 20:15:41'),
+(34, 45, 1, 0, 'First Comment', 1, '2013-12-02 20:20:08', '2013-12-02 20:20:08'),
+(35, 45, 1, 0, 'comment 2', 1, '2013-12-02 20:20:19', '2013-12-02 20:20:19'),
+(37, 47, 1, 0, 'Though they were once the dominant means of communicating world events, \nnewspapers have declined in readership since the rise of TV and the \nInternet. ', 1, '2013-12-02 21:34:51', '2013-12-02 21:34:51'),
+(38, 47, 1, 0, 'There are some benefits to newspapers—newspapers are markedly less \nexpensive than a television (which also often requires a cable service \nsubscription) or the computer and Internet service necessary to access \nthe Web. In contrast to some Internet resources, most newspaper articles\n have been well-researched, written with reliable sources and edited for\n accuracy. ', 1, '2013-12-02 21:35:06', '2013-12-02 21:35:06'),
+(39, 47, 1, 0, 'In general, newspapers are also more widely available—most convenience \nstores carry several papers, and local papers are easily found in \nvending machines on any city block. Some larger metropolitan areas even \nhave free regional weekly publications, with more opinion-based articles\n and lists of local events. ', 1, '2013-12-02 21:35:22', '2013-12-02 21:35:22'),
+(40, 48, 1, 0, 'According to historical records, the first \nOlympic Games were held in Olympia, Greece in 776 BC. They were usually \nheld every four years until 394 AD, when they were suppressed by \nTheodosius I.', 1, '2013-12-02 21:43:20', '2013-12-02 21:43:20');
 
 -- --------------------------------------------------------
 
@@ -165,16 +183,20 @@ CREATE TABLE IF NOT EXISTS `content` (
   KEY `parent_id` (`parent_id`),
   KEY `category_id` (`category_id`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `vid`, `author_id`, `title`, `content`, `extract`, `status`, `commentable`, `parent_id`, `category_id`, `type_id`, `password`, `comment_count`, `like_count`, `slug`, `created`, `updated`) VALUES
-(1, 1, 1, 'iphone', 'I want to buy iphone, could you please suggest?', 'iphone', 1, 1, 1, 1, 2, '', 5, 1, 'iphone', '2013-11-19 11:55:50', '2013-11-19 12:24:12'),
-(1, 2, 1, 'iphone', 'I want to buy iphone, could you please suggest?', 'I want to buy iphone, could you please suggest?', 1, 1, 1, 1, 2, '', 12, 1, 'iphone', '2013-11-19 11:55:50', '2013-11-19 16:35:21'),
-(2, 1, 1, 'Need Details', 'I need to know some details about shopping in Bangalore. Can anyone help me out?', 'I need to know some details about shopping in Bangalore. Can anyone help me out?', 1, 1, 1, 1, 2, '', 4, 0, 'need-details', '2013-11-19 15:37:20', '2013-11-19 16:58:59');
+(41, 1, 1, 'Pets', 'What Age Can a Male Dog Breed?', 'What Age Can a Male Dog Breed?', 1, 1, 1, 9, 2, '', 2, 0, 'pets1', '2013-12-02 20:05:39', '2013-12-02 20:12:25'),
+(42, 1, 1, 'Pets', 'What Is the Average Life Span of a Cat?', 'What Is the Average Life Span of a Cat?', 1, 1, 1, 9, 2, '', 2, 0, 'pets2', '2013-12-02 20:06:11', '2013-12-02 20:08:18'),
+(43, 1, 1, 'Pets', 'Which Dogs Don''t Molt ?', 'Which Dogs Don''t Molt ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets3', '2013-12-02 20:13:45', '2013-12-02 20:13:53'),
+(44, 1, 1, 'Pets', 'What Do Water Rats Eat ?', 'What Do Water Rats Eat ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets4', '2013-12-02 20:15:27', '2013-12-02 20:15:41'),
+(45, 1, 1, 'Health & Beauty', 'What are home remedies to make hair grow faster?', 'What are home remedies to make hair grow faster?', 1, 1, 1, 5, 2, '', 4, 0, 'health---beauty1', '2013-12-02 20:19:41', '2013-12-02 20:20:19'),
+(47, 1, 1, 'News & Events', 'Advantages and Disadvantages of Newspaper?', 'Advantages and Disadvantages of Newspaper?', 1, 1, 1, 10, 2, '', 6, 0, 'news---events1', '2013-12-02 21:34:32', '2013-12-02 21:35:22'),
+(48, 1, 1, 'Sports', 'What Games Were Played in the Ancient Olympics?', 'What Games Were Played in the Ancient Olympics?', 1, 1, 1, 4, 2, '', 2, 0, 'sports1', '2013-12-02 21:42:27', '2013-12-02 21:43:20');
 
 -- --------------------------------------------------------
 
@@ -279,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstName`, `lastName`, `displayName`, `about`, `user_role`, `status`, `activation_key`, `created`, `updated`) VALUES
-(1, 'eby.jane@gmail.com', '$2y$13$XnEvDHfFoZpCDCbB0EmioOEmgYyXcGOTttKFlvGN2VnQF9CB4FbHG', 'eby', 'jane', 'ebyjane', NULL, 5, 1, NULL, '2013-11-19 11:54:29', '2013-11-19 16:57:01'),
+(1, 'eby.jane@gmail.com', '$2y$13$4ynFAyLbPDxaKQHY0P1Ig.yzbfAAqtw6i6IGy20fTIHsGjoP2FtQK', 'eby', 'jane', 'ebyjane', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-02 21:06:42'),
 (2, 'eby.jane@yahoo.com', '$2y$13$O96bmLls2Tbtfld/74wyV.whXgC/shEz6loAtcYM4QJSfV0dSooG.', NULL, NULL, 'ebyjane', NULL, 1, 1, NULL, '2013-11-19 12:48:55', '2013-11-19 12:49:56');
 
 -- --------------------------------------------------------
@@ -318,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `user_metadata` (
 --
 
 INSERT INTO `user_metadata` (`user_id`, `key`, `value`, `created`, `updated`) VALUES
-(1, 'likes', '["1"]', '2013-11-19 11:56:25', '2013-11-19 11:56:25'),
+(1, 'likes', '["1","11"]', '2013-11-19 11:56:25', '2013-12-02 00:55:40'),
 (2, 'activationKey', '26d89d237e10474d', '2013-11-19 12:48:55', '2013-11-19 12:48:55'),
 (2, 'likes', '["1"]', '2013-11-19 12:50:19', '2013-11-19 12:50:19');
 

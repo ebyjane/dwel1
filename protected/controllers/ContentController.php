@@ -123,6 +123,7 @@ class ContentController extends CiiController
 	 **/
 	public function actionIndex($id=NULL)
 	{
+
 		// Run a pre check of our data
 		$requestUri = $this->beforeCiiAction($id);
 		
@@ -135,8 +136,8 @@ class ContentController extends CiiController
 		if ($content->status != 1)
 			throw new CHttpException('404', 'The article you specified does not exist. If you bookmarked this page, please delete it.');
         
-		$this->breadcrumbs = array_merge(Categories::model()->getParentCategories($content['category_id']), array($content['title']));
-		
+		//$this->breadcrumbs = array_merge(Categories::model()->getParentCategories($content['category_id']), array($content['title']));
+
 		// Check for a password
 		if ($content->attributes['password'] != '')
 		{
@@ -157,6 +158,7 @@ class ContentController extends CiiController
 				'data'=>$content, 
 				'meta'=>$meta,
 				'comments'=>Comments::model()->countByAttributes(array('content_id' => $content->id)),
+				'categories'=>Categories::model()->findAll(),
 				'model'=>Comments::model()
 			)
 		);
@@ -336,4 +338,73 @@ class ContentController extends CiiController
 		$this->renderPartial('application.views.site/rss', array('data'=>$data));
 		return;
 	}
+public function actionContent()
+	{
+
+		if (Yii::app()->request->isAjaxRequest && isset($_POST))
+		{
+
+			$content = new Content();
+			$content->attributes = array(
+				'vid'	=>	Yii::app()->user->id,
+				'author_id'	=>	Yii::app()->user->id,
+				'title'	=>	$_POST['Content']['title'],
+				'content'	=>	$_POST['Content']['content'],
+				'extract'	=>	$_POST['Content']['content'],
+				'status'	=>	1,
+				'commentable'	=>	1,				
+				'parent_id'	=>	1,
+				'category_id'	=>	$_POST['Content']['categories'],
+				'type_id'	=>	2,
+				'comment_count'	=>	0,
+				'like_count'	=>	0,
+			);
+			
+			
+			
+			if ($content->save())
+			{
+				/*$content = Content::model()->findByPk($_POST['Comments']['content_id']);
+				$content->comment_count++;
+				$content->save();*/
+				
+				
+				// Send an email to the author if someone makes a comment on their blog
+				if ($content->author->id != Yii::app()->user->id && Cii::getConfig('notifyAuthorOnComment', 0) == 1) 
+				{
+					$this->sendEmail($user, 'New Content Notification From CiiMS Blog', '//email/comments', array('content'=>$content, 'comment'=>$comment));
+				}
+
+				// Pass the values as "now" for the comment view"
+				$content->created = $content->updated = "now";
+
+				// Set the attributed id to make life easier...
+				header("X-Attribute-Id: {$content->id}");
+				$this->renderPartial('content', array(
+					'count'=>$content->comment_count, 
+					'content'=>$content,
+					'depth' => Cii::get($_POST['Content'], 'parent_id', 0) == 0 ? 0 : 1,
+					'md' => new CMarkdownParser
+				));
+			}
+			else
+			{
+			echo "error in saving data";
+				throw new CHttpException(400, 'Missing or malformed request');
+			}
+		}
+	}
+
+	public function actionGetContent($id = NULL)
+	{
+		$this->layout = false;
+
+		if ($id == NULL)
+			throw new CHttpException(400, 'Unable to retrieve content asked recently');
+
+		$content = Content::model()->findAllByAttributes(array('id' => $id));
+        
+		return Content::model()->thread(array_reverse($content));
+	}	
+	
 }

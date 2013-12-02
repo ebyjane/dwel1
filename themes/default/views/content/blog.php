@@ -2,13 +2,14 @@
 <?php $meta = Content::model()->parseMeta($content->metadata); ?>
 
 <div class="content" data-attr-id="<?php echo $content->id; ?>">
+<div id="content-container"></div>
 	<div class="post">
 		<?php if (Cii::get(Cii::get($meta, 'blog-image', array()), 'value', '') != ""): ?>
 			<p style="text-align:center;"><?php echo CHtml::image(Yii::app()->baseUrl . $meta['blog-image']['value'], NULL, array('class'=>'image')); ?></p>
 		<?php endif; ?>
 		<div class="post-inner">
 			<div class="post-header">
-				<h3 class="pull-left"><?php echo CHtml::link(CHtml::encode($content->title), Yii::app()->createUrl($content->slug)); ?></h3>
+				<h3 class="pull-left"><?php /*echo CHtml::link(CHtml::encode($content->title), Yii::app()->createUrl($content->slug));*/ ?></h3>
 				<div class="likes-container likes-container--topfix pull-right">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
 					    <a href="#" id="upvote" title="Like this post and discussion">
@@ -73,7 +74,7 @@
 	<div class="post">
 		<div class="post-inner">
 			<div class="post-header post-header-comments">
-				<h3 class="comment-count pull-left left-header"><?php echo Yii::t('comments', 'n==0#No Comments|n==1#{n} Comment|n>1#{n} Comments', $comments); ?></h3>
+				<h3 class="comment-count pull-left left-header"><?php echo Yii::t('comments', 'n==NaN#1 Comment|n==0#No Comments|n==1#{n} Comment|n>1#{n} Comments', $comments); ?></h3>
 				
 				<div class="likes-container pull-right">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
@@ -163,6 +164,9 @@
         		$("div#comment-container").children(":first").fadeIn();
         		$("#close").click();
         		$(".comment-count").text((parseInt($(".comment-count").text().replace(" Comment", "").replace(" Comments", "")) + 1) + " Comments");
+				if($(".comment-count").text() == "NaN Comments"){
+					$(".comment-count").text("1 Comment"); 
+				}
         	}
         );
     });

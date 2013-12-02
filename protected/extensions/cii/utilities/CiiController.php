@@ -267,10 +267,13 @@ class CiiController extends CController
         $categories = Yii::app()->cache->get('categories-listing');
         if ($categories == false)
         {
-            $categories = Yii::app()->db->createCommand('SELECT categories.id AS id, categories.name AS name, categories.slug AS slug, COUNT(DISTINCT(content.id)) AS content_count FROM categories LEFT JOIN content ON categories.id = content.category_id WHERE content.type_id = 2 AND content.status = 1 GROUP BY categories.id')->queryAll();
+           $categories = Yii::app()->db->createCommand('SELECT categories.id AS id, categories.name AS name, categories.slug AS slug, COUNT(DISTINCT(content.id)) AS content_count FROM categories LEFT JOIN content ON categories.id = content.category_id WHERE content.type_id = 2 AND content.status = 1 GROUP BY categories.id')->queryAll();
+		   
+		   /*$categories = Yii::app()->db->createCommand('SELECT * FROM categories')->queryAll();*/
             Yii::app()->cache->set('categories-listing', $categories);                          
         }
-        
+        //print_r($categories);
+		
         foreach ($categories as $k=>$v)
         {
             if ($v['name'] != 'Uncategorized')

@@ -96,7 +96,7 @@ class CategoriesController extends CiiController
 		
 		// Retrieve the data
 		$category = Categories::model()->findByPk($id);
-		$this->breadcrumbs = Categories::model()->getParentCategories($id);
+		//$this->breadcrumbs = Categories::model()->getParentCategories($id);
 		
 		// Parse Metadata
 		$meta = Categories::model()->parseMeta($category->metadata);		

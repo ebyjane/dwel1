@@ -1,6 +1,39 @@
 <?php $this->beginContent('//layouts/main'); ?>
 	<div class="span8">
 		<?php echo $content; ?>
+		<?php 
+						$comments = Comments::model()->findAllByAttributes(array('content_id' => $content->id));
+						
+						if(count($comments)>0){
+						
+						
+						$criteria=new CDbCriteria;
+						$criteria->order = 'created DESC';
+						$criteria->limit = 2;
+						$criteria->addCondition('content_id ='.$content->id)
+								 ->addCondition('approved = 1');
+
+						$itemCount = Comments::model()->count($criteria);
+						$pages=new CPagination($itemCount);
+						$pages->pageSize=$pageSize;
+
+						$criteria->offset = $criteria->limit*($pages->getCurrentPage());
+						$comments = Comments::model()->findAll($criteria);
+						
+						/*$comments = Comments::model()->findAllByAttributes(array('content_id' => $content->id));*/
+						
+		//print_r($comments);
+		foreach($comments as $k=>$val){
+		?>
+			<div class="green-indicator author-indicator">
+		<div class="comment-body">
+		    			    <p><p><?php echo $val['comment']; ?><p></p>
+					</div>
+	</div>		
+<?php
+		}
+		}
+		?>
 	</div>
 	<div class="span4 sidebar hidden-phone">
 		<div class="well">
@@ -14,8 +47,12 @@
 		
 		<!-- Related Posts -->
 		<div class="well">
-			<h4>Related Posts</h4>
-			<?php $this->widget('cii.widgets.CiiMenu', array('items' => $this->getRelatedPosts())); ?>
+			<!--<h4>Related Posts</h4>-->
+			<?php /*$this->widget('cii.widgets.CiiMenu', array('items' => $this->getRelatedPosts()));*/ ?>
+			<h4>Categories</h4>
+			<?php $this->widget('bootstrap.widgets.TbMenu', array(
+				'items' => $this->getCategories()
+			)); ?>				
 		</div>
 		
 		<!-- Tag Cloud -->

@@ -12,10 +12,14 @@
             <?php echo CHtml::endForm(); ?>
 		</div>
 		<div class="well">
-			<h4>Recent Posts</h4>
-			<?php $this->widget('cii.widgets.CiiMenu', array(
+			<!--<h4>Recent Posts</h4>-->
+			<?php /*$this->widget('cii.widgets.CiiMenu', array(
                 'items' => $this->getRecentPosts()
-            )); ?>
+            ));*/ ?>
+			<h4>Categories</h4>
+			<?php $this->widget('bootstrap.widgets.TbMenu', array(
+				'items' => $this->getCategories()
+			)); ?>			
 		</div>
 	</div>
 <?php $this->endContent(); ?>

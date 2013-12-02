@@ -48,6 +48,14 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
         	<a href="#" class="large-8 small-12 columns logo">
             	Dweling
             </a>
+			<div class="search-wrap">
+                	<form>
+                    <div class="row collapse">
+                    	<div class="small-10 columns"><input type="text" placeholder="Search..."></div>
+                        <div class="small-2 columns"><a class="button prefix search-btn" href="#">Search</a></div>
+                    </div>
+                    </form>
+                </div>
         </div>
 		<div class="span4">
             <div class="large-4 small-12 columns header_login">
@@ -131,18 +139,19 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
                         <div class="span3 well" id="eChrip">
                             <?php $this->widget('ext.echirp.EChirp', array('options' => array('user' => Cii::getConfig('twitter_username')))); ?>
                         </div>
+                        <div class="span3">
+                            <!--<h5>Recent Posts</h5>-->
+                            <?php /*$this->widget('bootstrap.widgets.TbMenu', array(
+                                'items' => $this->getRecentPosts()
+                            )); */?>
+                        </div>						
 		                <div class="span3">
                             <h5>Categories</h5>
                             <?php $this->widget('bootstrap.widgets.TbMenu', array(
                                 'items' => $this->getCategories()
                             )); ?>
                         </div>
-                        <div class="span3">
-                            <h5>Recent Posts</h5>
-                            <?php $this->widget('bootstrap.widgets.TbMenu', array(
-                                'items' => $this->getRecentPosts()
-                            )); ?>
-                        </div>
+
                         <div class="span3">
                             <h5>Search</h5>
                             <p>Looking for something on the blog?</p>
@@ -193,5 +202,5 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
   
   <script>
     /*$(document).foundation();*/
-	$(".iframe").colorbox({iframe:true, width:"60%", height:"67%"});
+	/*$(".iframe").colorbox({iframe:true, width:"60%", height:"67%"});*/
   </script>

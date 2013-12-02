@@ -1357,16 +1357,7 @@ header ul li a.gplus:hover{
 .login-wrap .signup a:hover{
 	background-position:0 -69px;	
 }
-.search-btn{
-	text-indent:-9999px;
-	background:url(../images/login-sprite.png) no-repeat 14px -98px #47ccdf;	
-}
-nav{
-	background:#47ccdf;	
-}
-.search-wrap input, .search-wrap a{
-	margin-bottom:0;	
-}
+
 .header_login, .nav-bar, .social_wrap{
 	padding:0;	
 }
@@ -1924,4 +1915,15 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 }
 .content-part .infinite_navigation{
 	width:100%;	
+}
+
+.search-btn{
+	text-indent:-9999px;
+	background:url(../images/login-sprite.png) no-repeat 14px -98px #47ccdf;	
+}
+nav{
+	background:#47ccdf;	
+}
+.search-wrap input, .search-wrap a{
+	margin-bottom:0;	
 }
