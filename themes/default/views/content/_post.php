@@ -10,7 +10,7 @@
 
 	<div class="post-inner">
 		<div class="post-header">
-			<h3><?php /*echo CHtml::link($content->title, Yii::app()->createUrl($content->slug));*/echo "<br/>"; ?></h3>
+			
 			<?php $md = new CMarkdownParser; echo strip_tags($md->safeTransform($content->extract), '<h1><h2><h3><h4><h5><6h><p><b><strong><i>'); ?>
 		</div>
 		<div class="blog-meta">

@@ -28,14 +28,14 @@ $list = CHtml::listData($models,
 					<strong>Hey there!</strong> Before posting a question, you must <?php echo CHtml::link('login', $this->createUrl('./site/login/')); ?> or <?php echo CHtml::link('signup', $this->createUrl('./site/register/')); ?>
 				</div>
         	<?php endif; ?>
-
-<textarea style="height:20px;width:485px" id="textbox"></textarea>        	
+<label class="advice-label">Ask for Advice!</label>
+<textarea style="height:20px;width:60%" id="textbox"></textarea>        	
 					<?php echo CHtml::dropDownList('categories', $category, 
               $list,
               array('empty' => 'Select a category'));
 ?>
 
-			<a href="#" style="margin-bottom: 5px;" class="sharebox-submit btn btn-success" id="submit-comment">Ask</a>
+			<a href="#" class="btn btn-ask" id="submit-comment">Ask</a>
 		<?php $this->endWidget(); ?>
 		<br/>
     <?php foreach($data as $content): ?>

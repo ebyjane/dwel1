@@ -46,7 +46,7 @@ div[class*='-indicator'] {
 }
 
 .green-indicator {
-	border-left:5px solid #A7CE44;
+	border-left:5px solid #47CCDF;
 }
 
 .blue-indicator {
@@ -249,8 +249,7 @@ main  {
 }
 
 main  .post .post-inner {
-	padding: 15px;
-	padding-top: 0px;
+	padding: 0 15px;
 	position: relative;
 }
 
@@ -296,7 +295,7 @@ main  .post .read-more-icon, main .infinite_navigation #more {
 	-webkit-transition: 1s;
 	width: 30px; overflow: hidden;
 	position: absolute;
-	bottom: -25px;
+	bottom: 0;
 	right:0;
 	outline: none;
 	z-index: 100;
@@ -1926,4 +1925,23 @@ nav{
 }
 .search-wrap input, .search-wrap a{
 	margin-bottom:0;	
+}
+.advice-label{
+	font-size:20px;
+	background:url(../images/advice-icon.png) no-repeat;
+	display:block;
+	padding-left:28px;	
+}
+.btn.btn-ask{
+	background: none repeat scroll 0 0 #47CCDF;
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 4px 20px;	
+}
+.post-header p{
+	color: #47CCDF;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 0;
 }
