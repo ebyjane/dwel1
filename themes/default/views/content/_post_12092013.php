@@ -10,17 +10,7 @@
 
 	<div class="post-inner">
 		<div class="post-header">
-				<div class="likes-container likes-container--topfix pull-right" style="top:-18px;right:140px;position:absolute">
-					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
-					    <a href="#" id="upvote" title="Like this post and discussion">
-							<span class="counter">
-					            <span id="like-count-<?php echo $content->id; ?>"><?php echo $content->like_count; ?></span>
-					        </span> 
-					    	<span class="icon-thumbs-up icon-yellow"></span>
-					             
-					    </a>
-					</div>
-				</div>
+			<h3><?php /*echo CHtml::link($content->title, Yii::app()->createUrl($content->slug));*/echo "<br/>"; ?></h3>
 			<?php $md = new CMarkdownParser; echo strip_tags($md->safeTransform($content->extract), '<h1><h2><h3><h4><h5><6h><p><b><strong><i>'); ?>
 		</div>
 		<div class="blog-meta">

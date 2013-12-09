@@ -267,7 +267,7 @@ class ContentController extends CiiController
 			{
 				$_SESSION['password'][$id]['password'] = $encrypted;
 				$_SESSION['password'][$id]['tries'] = 0;
-				$this->redirect(Yii::app()->createUrl($content->attributes['slug']));
+				$this->redirect(Yii::app()->createUrl("/dwel1/".$content->attributes['slug']));
 			}
 			else
 			{
@@ -372,7 +372,7 @@ public function actionContent()
 				// Send an email to the author if someone makes a comment on their blog
 				if ($content->author->id != Yii::app()->user->id && Cii::getConfig('notifyAuthorOnComment', 0) == 1) 
 				{
-					$this->sendEmail($user, 'New Content Notification From CiiMS Blog', '//email/comments', array('content'=>$content, 'comment'=>$comment));
+					$this->sendEmail($user, 'New Content Notification From Dweling', '//email/comments', array('content'=>$content, 'comment'=>$comment));
 				}
 
 				// Pass the values as "now" for the comment view"

@@ -93,36 +93,42 @@ class CiiController extends CController
      */
     protected function sendEmail(Users $user, $subject = "", $viewFile, $content = array(), $return = true, $processOutput = true)
     {
+
         Yii::import('application.extensions.phpmailer.JPhpMailer');
         $mail = new JPhpMailer;
         $mail->IsSMTP();
-
-        $smtpHost    = Cii::getConfig('SMTPHost',    NULL);
-        $smtpPort    = Cii::getConfig('SMTPPort',    NULL);
-        $smtpUser    = Cii::getConfig('SMTPUser',    NULL);
-        $smtpPass    = Cii::getConfig('SMTPPass',    NULL);
+		
+        $smtpHost    = Cii::getConfig('SMTPHost',    "smtp.gmail.com");
+        $smtpPort    = Cii::getConfig('SMTPPort',    "465");
+        $smtpUser    = Cii::getConfig('SMTPUser',    "eby.jane@gmail.com");
+        $smtpPass    = Cii::getConfig('SMTPPass',    "Yahoo@2012");
+		$mail->SMTPDebug = 1;		
 
         $notifyUser  = new stdClass;
         $notifyUser->email       = Cii::getConfig('notifyEmail', NULL);
         $notifyUser->displayName = Cii::getConfig('notifyName',  NULL);
 
         if ($smtpHost !== NULL)
-            $mail->Host       = $smtpHost->value; 
+            $mail->Host       = $smtpHost; 
 
+			$mail->SMTPAuth = true;
+			$mail->SMTPSecure = "ssl";
+			
         if ($smtpPort !== NULL)
-            $mail->Port       = $smtpPort->value;
+            $mail->Port       = $smtpPort;
 
         if ($smtpUser !== NULL)                    
-            $mail->Username   = $smtpUser->value; 
+            $mail->Username   = $smtpUser; 
 
         if ($smtpPass !== NULL)
-            $mail->Password   = $smtpPass->value;      
+            $mail->Password   = $smtpPass;      
 
         if ($notifyUser->email == NULL && $notifyUser->displayName == NULL)
             $notifyUser = Users::model()->findByPk(1);
-
+			
         $mail->SetFrom($notifyUser->email, $notifyUser->displayName);
         $mail->Subject = $subject;
+		$mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
         $mail->MsgHTML($this->renderPartial($viewFile, $content, $return, $processOutput));
         $mail->AddAddress($user->email, $user->displayName);
 

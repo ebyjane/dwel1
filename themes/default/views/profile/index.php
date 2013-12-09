@@ -1,7 +1,7 @@
 <h4 class="pull-left"><?php echo CHtml::encode($model->name); ?></h4>
 <?php if (!Yii::app()->user->isGuest && $model->id == Yii::app()->user->id): ?>
 	<span class="pull-right">
-		<?php echo CHtml::link('edit', '/profile/edit'); ?>
+		<?php echo CHtml::link('edit', '/dwel1/profile/edit'); ?>
 	</span>
 <?php endif; ?>
 <div class="clearfix"></div>

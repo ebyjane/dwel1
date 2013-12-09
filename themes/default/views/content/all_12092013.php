@@ -28,14 +28,14 @@ $list = CHtml::listData($models,
 					<strong>Hey there!</strong> Before posting a question, you must <?php echo CHtml::link('login', $this->createUrl('./site/login/')); ?> or <?php echo CHtml::link('signup', $this->createUrl('./site/register/')); ?>
 				</div>
         	<?php endif; ?>
-<label class="advice-label">Ask for Advice!</label>
-<textarea style="height:20px;width:60%" id="textbox"></textarea>        	
+
+<textarea style="height:20px;width:485px" id="textbox"></textarea>        	
 					<?php echo CHtml::dropDownList('categories', $category, 
               $list,
               array('empty' => 'Select a category'));
 ?>
 
-			<a href="#" class="btn btn-ask" id="submit-comment">Ask</a>
+			<a href="#" style="margin-bottom: 5px;" class="sharebox-submit btn btn-success" id="submit-comment">Ask</a>
 		<?php $this->endWidget(); ?>
 		<br/>
     <?php foreach($data as $content): ?>
@@ -112,31 +112,6 @@ $list = CHtml::listData($models,
         	}
         );
     });
-')->registerScript('likeButton', '
-	$("[id ^=\'upvote\']").click(function(e) {
-		e.preventDefault();
-		var idVal = $(this).find("span").find("span").attr("id");
-		var id = idVal.split("-");		
-		var url = "/content/like/id/"+id[2];
-
-		$.post("/dwel1/content/like/id/"+id[2], function(data, textStatus, jqXHR) {
-			if (data.status == undefined)
-				window.location = "' . $this->createUrl('/login') . '"
-
-			if (data.status == "success")
-			{
-				var count = parseInt($("#"+idVal).text());
-				
-				if (data.type == "inc"){
-					$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
-					}
-				else{
-					$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
-					}
-			}
-		});
-		return false;
-	});
 ')->registerScript('fetchContent', '
 	$.post("' . $this->createUrl('/content/getContent/id/' . $content->id) . '", function(data) {
 

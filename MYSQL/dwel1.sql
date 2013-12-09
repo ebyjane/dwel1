@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2013 at 05:16 PM
+-- Generation Time: Dec 09, 2013 at 11:17 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -183,20 +183,21 @@ CREATE TABLE IF NOT EXISTS `content` (
   KEY `parent_id` (`parent_id`),
   KEY `category_id` (`category_id`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `vid`, `author_id`, `title`, `content`, `extract`, `status`, `commentable`, `parent_id`, `category_id`, `type_id`, `password`, `comment_count`, `like_count`, `slug`, `created`, `updated`) VALUES
-(41, 1, 1, 'Pets', 'What Age Can a Male Dog Breed?', 'What Age Can a Male Dog Breed?', 1, 1, 1, 9, 2, '', 2, 0, 'pets1', '2013-12-02 20:05:39', '2013-12-02 20:12:25'),
-(42, 1, 1, 'Pets', 'What Is the Average Life Span of a Cat?', 'What Is the Average Life Span of a Cat?', 1, 1, 1, 9, 2, '', 2, 0, 'pets2', '2013-12-02 20:06:11', '2013-12-02 20:08:18'),
+(41, 1, 1, 'Pets', 'What Age Can a Male Dog Breed?', 'What Age Can a Male Dog Breed?', 1, 1, 1, 9, 2, '', 2, 0, 'pets1', '2013-12-02 20:05:39', '2013-12-10 03:37:10'),
+(42, 1, 1, 'Pets', 'What Is the Average Life Span of a Cat?', 'What Is the Average Life Span of a Cat?', 1, 1, 1, 9, 2, '', 2, 1, 'pets2', '2013-12-02 20:06:11', '2013-12-10 03:13:58'),
 (43, 1, 1, 'Pets', 'Which Dogs Don''t Molt ?', 'Which Dogs Don''t Molt ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets3', '2013-12-02 20:13:45', '2013-12-02 20:13:53'),
 (44, 1, 1, 'Pets', 'What Do Water Rats Eat ?', 'What Do Water Rats Eat ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets4', '2013-12-02 20:15:27', '2013-12-02 20:15:41'),
-(45, 1, 1, 'Health & Beauty', 'What are home remedies to make hair grow faster?', 'What are home remedies to make hair grow faster?', 1, 1, 1, 5, 2, '', 4, 0, 'health---beauty1', '2013-12-02 20:19:41', '2013-12-02 20:20:19'),
-(47, 1, 1, 'News & Events', 'Advantages and Disadvantages of Newspaper?', 'Advantages and Disadvantages of Newspaper?', 1, 1, 1, 10, 2, '', 6, 0, 'news---events1', '2013-12-02 21:34:32', '2013-12-02 21:35:22'),
-(48, 1, 1, 'Sports', 'What Games Were Played in the Ancient Olympics?', 'What Games Were Played in the Ancient Olympics?', 1, 1, 1, 4, 2, '', 2, 0, 'sports1', '2013-12-02 21:42:27', '2013-12-02 21:43:20');
+(45, 1, 1, 'Health & Beauty', 'What are home remedies to make hair grow faster?', 'What are home remedies to make hair grow faster?', 1, 1, 1, 5, 2, '', 4, 1, 'health---beauty1', '2013-12-02 20:19:41', '2013-12-10 03:43:44'),
+(47, 1, 1, 'News & Events', 'Advantages and Disadvantages of Newspaper?', 'Advantages and Disadvantages of Newspaper?', 1, 1, 1, 10, 2, '', 6, 2, 'news---events1', '2013-12-02 21:34:32', '2013-12-10 03:41:26'),
+(48, 1, 1, 'Sports', 'What Games Were Played in the Ancient Olympics?', 'What Games Were Played in the Ancient Olympics?', 1, 1, 1, 4, 2, '', 2, 2, 'sports1', '2013-12-02 21:42:27', '2013-12-10 03:42:46'),
+(49, 1, 1, 'Discovery & Entrepreneurship', 'what is your question?', 'what is your question?', 1, 1, 1, 18, 2, '', 0, 2, 'discovery---entrepreneurship1', '2013-12-09 22:03:11', '2013-12-10 03:11:05');
 
 -- --------------------------------------------------------
 
@@ -294,15 +295,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   KEY `user_role` (`user_role`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstName`, `lastName`, `displayName`, `about`, `user_role`, `status`, `activation_key`, `created`, `updated`) VALUES
-(1, 'eby.jane@gmail.com', '$2y$13$4ynFAyLbPDxaKQHY0P1Ig.yzbfAAqtw6i6IGy20fTIHsGjoP2FtQK', 'eby', 'jane', 'ebyjane', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-02 21:06:42'),
-(2, 'eby.jane@yahoo.com', '$2y$13$O96bmLls2Tbtfld/74wyV.whXgC/shEz6loAtcYM4QJSfV0dSooG.', NULL, NULL, 'ebyjane', NULL, 1, 1, NULL, '2013-11-19 12:48:55', '2013-11-19 12:49:56');
+(1, 'eby.jane@gmail.com', '$2y$13$.0miwHRD7x2v77rDHqKbSOjfsKfcqtpNfishD1ghfSH7GgXHMGkEa', 'eby', 'jane', 'Dweling', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-10 00:53:56'),
+(7, 'eby.jane@yahoo.co.in', '$2y$13$hbDbiwPrWvfBW1bdCmqV0uLCq7apH7e4V5hVxwozrLfzupXzjaLL.', NULL, NULL, 'ebyjane', NULL, 1, 1, NULL, '2013-12-10 00:58:27', '2013-12-10 01:53:46');
 
 -- --------------------------------------------------------
 
@@ -340,9 +341,8 @@ CREATE TABLE IF NOT EXISTS `user_metadata` (
 --
 
 INSERT INTO `user_metadata` (`user_id`, `key`, `value`, `created`, `updated`) VALUES
-(1, 'likes', '["1","11"]', '2013-11-19 11:56:25', '2013-12-02 00:55:40'),
-(2, 'activationKey', '26d89d237e10474d', '2013-11-19 12:48:55', '2013-11-19 12:48:55'),
-(2, 'likes', '["1"]', '2013-11-19 12:50:19', '2013-11-19 12:50:19');
+(1, 'likes', '["1","11","49","48","47"]', '2013-11-19 11:56:25', '2013-12-09 22:28:35'),
+(7, 'likes', '{"0":"42","1":"47","3":"48","4":"45"}', '2013-12-10 01:01:21', '2013-12-10 03:43:44');
 
 -- --------------------------------------------------------
 

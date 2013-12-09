@@ -89,7 +89,7 @@ class ProfileController extends CiiController
 			if ($model === NULL)
 				throw new CHttpException(404, 'Oops! That user doesn\'t exist on our network!');
 			else
-				$this->redirect('/profile/' . $model->id . '/' . preg_replace('/[^\da-z]/i', '', $model->displayName));
+				$this->redirect('/dwel1/profile/' . $model->id . '/' . preg_replace('/[^\da-z]/i', '', $model->displayName));
 		}
 
 		$model = Users::model()->findByPk($id);

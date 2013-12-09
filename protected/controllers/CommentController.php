@@ -106,7 +106,7 @@ class CommentController extends CiiController
 				// Send an email to the author if someone makes a comment on their blog
 				if ($content->author->id != Yii::app()->user->id && Cii::getConfig('notifyAuthorOnComment', 0) == 1) 
 				{
-					$this->sendEmail($user, 'New Comment Notification From CiiMS Blog', '//email/comments', array('content'=>$content, 'comment'=>$comment));
+					$this->sendEmail($user, 'New Comment Notification From Dweling', '//email/comments', array('content'=>$content, 'comment'=>$comment));
 				}
 
 				// Pass the values as "now" for the comment view"

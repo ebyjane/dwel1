@@ -154,7 +154,7 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
 
                         <div class="span3">
                             <h5>Search</h5>
-                            <p>Looking for something on the blog?</p>
+                            <p>Looking for something on Dweling?</p>
                             <?php echo CHtml::beginForm($this->createUrl('/search'), 'get', array('id' => 'search')); ?>
                                 <div class="input-append">
                                     <?php echo CHtml::textField('q', Cii::get($_GET, 'q', ''), array('type' => 'text', 'style' => 'width: 75%', 'placeholder' => 'Search...')); ?>
