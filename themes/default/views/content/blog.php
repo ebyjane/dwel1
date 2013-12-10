@@ -22,27 +22,8 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="blog-meta inline">
-				<span class="date"><?php echo $content->getCreatedFormatted() ?></span>
-				<span class="separator">⋅</span>
-				<span class="blog-author minor-meta"><strong>by </strong>
-					<span>
-						<?php echo CHtml::link(CHtml::encode($content->author->displayName), $this->createUrl("/profile/{$content->author->id}/")); ?>
-					</span>
-					<span class="separator">⋅</span> 
-				</span> 
-				<span class="minor-meta-wrap">
-					<span class="blog-categories minor-meta"><strong>in </strong>
-					<span>
-						<?php echo CHtml::link(CHtml::encode($content->category->name), Yii::app()->createUrl($content->category->slug)); ?>
-					</span> 
-					<span class="separator">⋅</span> 
-				</span> 					
-				<span class="comment-container">
-					<?php echo $content->getCommentCount(); ?> Comments</a>					
-				</span>
-			</div>
-			<div class="clearfix"></div>
+			
+			
 				<?php
 					$md = new CMarkdownParser;
 					$dom = new DOMDocument();
@@ -63,6 +44,29 @@
 
 					echo $dom->saveHtml();
 				?>
+                <div class="clearfix"></div>
+                
+                <div class="blog-meta inline">
+				<span class="date"><?php echo $content->getCreatedFormatted() ?></span>
+				<span class="separator">⋅</span>
+				<span class="blog-author minor-meta"><strong>by </strong>
+					<span>
+						<?php echo CHtml::link(CHtml::encode($content->author->displayName), $this->createUrl("/profile/{$content->author->id}/")); ?>
+					</span>
+					<span class="separator">⋅</span> 
+				</span> 
+				<span class="minor-meta-wrap">
+					<span class="blog-categories minor-meta"><strong>in </strong>
+					<span>
+						<?php echo CHtml::link(CHtml::encode($content->category->name), Yii::app()->createUrl($content->category->slug)); ?>
+					</span> 
+					<span class="separator">⋅</span> 
+				</span> 					
+				<span class="comment-container">
+					<?php echo $content->getCommentCount(); ?> Comments</a>					
+				</span>
+			</div>
+            
 		</div>
 	    <div style="clear:both;"><br /></div>
 	</div>

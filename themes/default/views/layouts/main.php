@@ -130,21 +130,15 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
 		</main>
 		
 		<footer>
+        	<div class="container main-container">
 		    <div class="footer-top-block">
 		        <div class="container"></div>
 		    </div>
 		    <div class="footer-main-block">
 		        <div class="row-fluid">
 		            <div class="inner-container">
-                        <div class="span3 well" id="eChrip">
-                            <?php $this->widget('ext.echirp.EChirp', array('options' => array('user' => Cii::getConfig('twitter_username')))); ?>
-                        </div>
-                        <div class="span3">
-                            <!--<h5>Recent Posts</h5>-->
-                            <?php /*$this->widget('bootstrap.widgets.TbMenu', array(
-                                'items' => $this->getRecentPosts()
-                            )); */?>
-                        </div>						
+                        
+                       				
 		                <div class="span3">
                             <h5>Categories</h5>
                             <?php $this->widget('bootstrap.widgets.TbMenu', array(
@@ -164,12 +158,14 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
 		            </div>
 		        </div>
 		    </div>
+            </div>
 		    <div class="footer-bottom-block">
 		        <div class="container">
-                        <div class="pull-left">Copyright &copy <?php echo date('Y'); ?> <?php echo Yii::app()->name; ?></div>
+                        <div class="pull-left">Copyright &copy <?php echo date('Y'); ?> <?php echo Yii::app()->name; ?>, All rights reserved</div>
                         <div class="pull-right cii-menu"><?php $this->widget('cii.widgets.CiiMenu', array('items' => $this->getCiiMenu(), 'htmlOptions' => array('class' => 'footer-nav'))); ?></div>
 		        </div>
 		    </div>
+            
 		</footer>
 		
 		<?php if (!YII_DEBUG):
