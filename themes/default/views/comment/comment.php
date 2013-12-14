@@ -1,5 +1,19 @@
 <div class="comment comment-<?php echo $comment->id; ?>" data-attr-id="<?php echo $comment->id; ?>" style="margin-left: <?php echo $depth*4 * 10; ?>px; display:none;">
-	<?php echo CHtml::image($comment->author->gravatarImage(30), NULL, array('class' => 'rounded-image avatar')); ?>
+	<?php /*echo CHtml::image($comment->author->gravatarImage(30), NULL, array('class' => 'rounded-image avatar'));*/ ?>
+	
+	<?php //echo $content->author->id; 
+							$model  = Users::model();
+							$id = $comment->user_id;
+							$key = "blog-image";
+							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							//echo count($image_data);
+							if(count($image_data)>0){
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+							}else{
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+							}	
+	
+	?>
 	<div class="<?php echo $comment->author->id == $comment->content->author->id ? 'green-indicator author-indicator' : NULL; ?>">
 		<div class="comment-body comment-byline">
 			<?php echo CHtml::encode($comment->author->name); ?>

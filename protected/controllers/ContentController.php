@@ -296,7 +296,7 @@ class ContentController extends CiiController
 		$data = array();
 		$pages = array();
 		$itemCount = 0;
-		$pageSize = Cii::getConfig('contentPaginationSize', 10);	
+		$pageSize = Cii::getConfig('contentPaginationSize', 1);
 		
 		$criteria=new CDbCriteria;
         $criteria->order = 'created DESC';

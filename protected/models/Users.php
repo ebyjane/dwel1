@@ -202,4 +202,11 @@ class Users extends CiiModel
 	{
 		return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))).'?s='.$size;
 	}
+	
+	public function dwelingImage($size=20, $default=NULL)
+	{
+		return "http://localhost/dwel1/uploads/images.jpg?s=".$size;
+	}	
+	
+	
 }

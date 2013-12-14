@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2013 at 11:17 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.16
+-- Generation Time: Dec 14, 2013 at 08:16 PM
+-- Server version: 5.6.14
+-- PHP Version: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `dwel1`
 --
-CREATE DATABASE IF NOT EXISTS `dwel1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `dwel1`;
 
 -- --------------------------------------------------------
 
@@ -99,23 +97,20 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `content_id` (`content_id`),
   KEY `user_id` (`user_id`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `content_id`, `user_id`, `parent_id`, `comment`, `approved`, `created`, `updated`) VALUES
-(30, 42, 1, 0, 'First Comment', 1, '2013-12-02 20:08:18', '2013-12-02 20:08:18'),
-(31, 41, 1, 0, 'test comment', 1, '2013-12-02 20:12:25', '2013-12-02 20:12:25'),
-(32, 43, 1, 0, 'test comment', 1, '2013-12-02 20:13:53', '2013-12-02 20:13:53'),
-(33, 44, 1, 0, 'test', 1, '2013-12-02 20:15:41', '2013-12-02 20:15:41'),
-(34, 45, 1, 0, 'First Comment', 1, '2013-12-02 20:20:08', '2013-12-02 20:20:08'),
-(35, 45, 1, 0, 'comment 2', 1, '2013-12-02 20:20:19', '2013-12-02 20:20:19'),
-(37, 47, 1, 0, 'Though they were once the dominant means of communicating world events, \nnewspapers have declined in readership since the rise of TV and the \nInternet. ', 1, '2013-12-02 21:34:51', '2013-12-02 21:34:51'),
-(38, 47, 1, 0, 'There are some benefits to newspapers—newspapers are markedly less \nexpensive than a television (which also often requires a cable service \nsubscription) or the computer and Internet service necessary to access \nthe Web. In contrast to some Internet resources, most newspaper articles\n have been well-researched, written with reliable sources and edited for\n accuracy. ', 1, '2013-12-02 21:35:06', '2013-12-02 21:35:06'),
-(39, 47, 1, 0, 'In general, newspapers are also more widely available—most convenience \nstores carry several papers, and local papers are easily found in \nvending machines on any city block. Some larger metropolitan areas even \nhave free regional weekly publications, with more opinion-based articles\n and lists of local events. ', 1, '2013-12-02 21:35:22', '2013-12-02 21:35:22'),
-(40, 48, 1, 0, 'According to historical records, the first \nOlympic Games were held in Olympia, Greece in 776 BC. They were usually \nheld every four years until 394 AD, when they were suppressed by \nTheodosius I.', 1, '2013-12-02 21:43:20', '2013-12-02 21:43:20');
+(41, 52, 1, 0, 'Forum food coat will be good in bangalore', 1, '2013-12-13 21:26:21', '2013-12-13 21:26:21'),
+(42, 53, 1, 0, 'The best way is you can rent a car and visit the place', 1, '2013-12-13 21:31:15', '2013-12-13 21:31:15'),
+(43, 53, 1, 0, 'Better way is you can travel in train', 1, '2013-12-13 21:31:43', '2013-12-13 21:31:43'),
+(44, 55, 1, 0, 'opp to velankanni tech part :)', 1, '2013-12-13 21:33:49', '2013-12-13 21:33:49'),
+(45, 55, 1, 0, 'Near by Electronic city bus stop.', 1, '2013-12-13 21:34:47', '2013-12-13 21:34:47'),
+(46, 55, 7, 0, 'Most of the places near by velankanni tech park has gym.', -1, '2013-12-15 00:45:07', '2013-12-15 00:45:59'),
+(47, 55, 7, 45, 'Thanks for the info.', 1, '2013-12-15 00:45:43', '2013-12-15 00:45:43');
 
 -- --------------------------------------------------------
 
@@ -183,21 +178,34 @@ CREATE TABLE IF NOT EXISTS `content` (
   KEY `parent_id` (`parent_id`),
   KEY `category_id` (`category_id`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=64 ;
 
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `vid`, `author_id`, `title`, `content`, `extract`, `status`, `commentable`, `parent_id`, `category_id`, `type_id`, `password`, `comment_count`, `like_count`, `slug`, `created`, `updated`) VALUES
-(41, 1, 1, 'Pets', 'What Age Can a Male Dog Breed?', 'What Age Can a Male Dog Breed?', 1, 1, 1, 9, 2, '', 2, 0, 'pets1', '2013-12-02 20:05:39', '2013-12-10 03:37:10'),
-(42, 1, 1, 'Pets', 'What Is the Average Life Span of a Cat?', 'What Is the Average Life Span of a Cat?', 1, 1, 1, 9, 2, '', 2, 1, 'pets2', '2013-12-02 20:06:11', '2013-12-10 03:13:58'),
-(43, 1, 1, 'Pets', 'Which Dogs Don''t Molt ?', 'Which Dogs Don''t Molt ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets3', '2013-12-02 20:13:45', '2013-12-02 20:13:53'),
-(44, 1, 1, 'Pets', 'What Do Water Rats Eat ?', 'What Do Water Rats Eat ?', 1, 1, 1, 9, 2, '', 2, 0, 'pets4', '2013-12-02 20:15:27', '2013-12-02 20:15:41'),
-(45, 1, 1, 'Health & Beauty', 'What are home remedies to make hair grow faster?', 'What are home remedies to make hair grow faster?', 1, 1, 1, 5, 2, '', 4, 1, 'health---beauty1', '2013-12-02 20:19:41', '2013-12-10 03:43:44'),
-(47, 1, 1, 'News & Events', 'Advantages and Disadvantages of Newspaper?', 'Advantages and Disadvantages of Newspaper?', 1, 1, 1, 10, 2, '', 6, 2, 'news---events1', '2013-12-02 21:34:32', '2013-12-10 03:41:26'),
-(48, 1, 1, 'Sports', 'What Games Were Played in the Ancient Olympics?', 'What Games Were Played in the Ancient Olympics?', 1, 1, 1, 4, 2, '', 2, 2, 'sports1', '2013-12-02 21:42:27', '2013-12-10 03:42:46'),
-(49, 1, 1, 'Discovery & Entrepreneurship', 'what is your question?', 'what is your question?', 1, 1, 1, 18, 2, '', 0, 2, 'discovery---entrepreneurship1', '2013-12-09 22:03:11', '2013-12-10 03:11:05');
+(52, 1, 1, 'Food & Beverage', 'Can someone tell me where i can get good food in bangalore?', 'Can someone tell me where i can get good food in bangalore?', 1, 1, 1, 12, 2, '', 2, 1, 'food---beverage1', '2013-12-13 21:24:49', '2013-12-13 21:26:21'),
+(53, 1, 1, 'Travel & Tourism', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 1, 1, 1, 6, 2, '', 4, 0, 'travel---tourism1', '2013-12-13 21:29:38', '2013-12-13 21:31:43'),
+(54, 1, 1, 'Education & Development', 'Which is the best school in bangalore?', 'Which is the best school in bangalore?', 1, 1, 1, 2, 2, '', 0, 0, 'education---development1', '2013-12-13 21:32:54', '2013-12-13 21:32:54'),
+(55, 1, 1, 'Fitness & Style', 'Can anyone tell me where is the gym in electronic city?', 'Can anyone tell me where is the gym in electronic city?', 1, 1, 1, 7, 2, '', 9, 1, 'fitness---style1', '2013-12-13 21:33:28', '2013-12-15 00:45:59'),
+(56, 1, 1, 'News & Events', 'Can someone tell me the events happening this weekend?', 'Can someone tell me the events happening this weekend?', 1, 1, 1, 10, 2, '', 0, 0, 'news---events1', '2013-12-13 21:35:45', '2013-12-13 21:35:45'),
+(57, 1, 1, 'Health & Beauty', 'Can someone tell me where is beauty parlour in electronic city?', 'Can someone tell me where is beauty parlour in electronic city?', 1, 1, 1, 5, 2, '', 0, 0, 'health---beauty1', '2013-12-13 21:36:25', '2013-12-13 21:36:25'),
+(58, 1, 1, 'Pets', 'where can i buy a Pomeranian pet in bangalore?', 'where can i buy a Pomeranian pet in bangalore?', 1, 1, 1, 9, 2, '', 0, 0, 'pets1', '2013-12-13 21:37:46', '2013-12-13 21:37:46'),
+(59, 1, 1, 'Law & Rules', 'where is the court in bangalore?', 'where is the court in bangalore?', 1, 1, 1, 15, 2, '', 0, 0, 'law---rules1', '2013-12-13 21:38:09', '2013-12-13 21:38:09'),
+(60, 1, 1, 'Politics & Government', 'I think BJP will be making the next government? What you guys think?', 'I think BJP will be making the next government? What you guys think?', 1, 1, 1, 16, 2, '', 0, 1, 'politics---government1', '2013-12-13 21:39:05', '2013-12-13 21:39:31'),
+(61, 1, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-13 21:42:20'),
+(61, 2, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 01:45:52'),
+(61, 3, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:05'),
+(61, 4, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:46'),
+(61, 5, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:06:05'),
+(61, 6, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:11:16'),
+(61, 7, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:59:05'),
+(61, 8, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 03:29:29'),
+(61, 9, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 20:42:07'),
+(61, 10, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 20:42:25'),
+(62, 1, 1, 'Sports', 'Can anyone let me know where the bangalore marathon is going to be this year?', 'Can anyone let me know where the bangalore marathon is going to be this year?', 1, 1, 1, 4, 2, '', 0, 1, 'sports1', '2013-12-13 21:43:16', '2013-12-14 01:41:24'),
+(63, 7, 7, 'Politics & Government', 'Who will win in coming election? BJP or Congress?', 'Who will win in coming election? BJP or Congress?', 1, 1, 1, 16, 2, '', 0, 0, 'politics---government2', '2013-12-14 22:42:26', '2013-12-14 22:42:26');
 
 -- --------------------------------------------------------
 
@@ -214,6 +222,16 @@ CREATE TABLE IF NOT EXISTS `content_metadata` (
   UNIQUE KEY `content_id_2` (`content_id`,`key`),
   KEY `content_id` (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `content_metadata`
+--
+
+INSERT INTO `content_metadata` (`content_id`, `key`, `value`, `created`, `updated`) VALUES
+(61, 'blog-image', '/dwel1/uploads/upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '2013-12-14 20:42:22', '2013-12-14 20:42:22'),
+(61, 'upload-5415c7fe534a63366b48d388f204c32817.jpg', '/dwel1/uploads/upload-5415c7fe534a63366b48d388f204c32817.jpg', '2013-12-14 04:42:23', '2013-12-14 04:42:23'),
+(61, 'upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '/dwel1/uploads/upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '2013-12-14 03:29:10', '2013-12-14 03:29:10'),
+(61, 'upload-79958cabcbd8ab4afe3279374677ede2.jpg', '/dwel1/uploads/upload-79958cabcbd8ab4afe3279374677ede2.jpg', '2013-12-14 03:30:06', '2013-12-14 03:30:06');
 
 -- --------------------------------------------------------
 
@@ -302,8 +320,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstName`, `lastName`, `displayName`, `about`, `user_role`, `status`, `activation_key`, `created`, `updated`) VALUES
-(1, 'eby.jane@gmail.com', '$2y$13$.0miwHRD7x2v77rDHqKbSOjfsKfcqtpNfishD1ghfSH7GgXHMGkEa', 'eby', 'jane', 'Dweling', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-10 00:53:56'),
-(7, 'eby.jane@yahoo.co.in', '$2y$13$hbDbiwPrWvfBW1bdCmqV0uLCq7apH7e4V5hVxwozrLfzupXzjaLL.', NULL, NULL, 'ebyjane', NULL, 1, 1, NULL, '2013-12-10 00:58:27', '2013-12-10 01:53:46');
+(1, 'eby.jane@gmail.com', '$2y$13$RkRy82Ohpy3Xuy3WIdq0Lu3ySaHnd/P/fKjgkNCn2coWUslHO/HLK', 'eby', 'jane', 'Dweling', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-15 00:39:42'),
+(7, 'eby.jane@yahoo.co.in', '$2y$13$uEkFTjfyVhmmvLtS7it3G.encrCpoVwm4kSg/8eRG20qETaqKOHkS', '', '', 'ebyjane', '', 1, 1, NULL, '2013-12-10 00:58:27', '2013-12-15 00:44:06');
 
 -- --------------------------------------------------------
 
@@ -328,8 +346,8 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
 
 CREATE TABLE IF NOT EXISTS `user_metadata` (
   `user_id` int(15) NOT NULL,
-  `key` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `value` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   UNIQUE KEY `user_id_2` (`user_id`,`key`),
@@ -341,8 +359,14 @@ CREATE TABLE IF NOT EXISTS `user_metadata` (
 --
 
 INSERT INTO `user_metadata` (`user_id`, `key`, `value`, `created`, `updated`) VALUES
-(1, 'likes', '["1","11","49","48","47"]', '2013-11-19 11:56:25', '2013-12-09 22:28:35'),
-(7, 'likes', '{"0":"42","1":"47","3":"48","4":"45"}', '2013-12-10 01:01:21', '2013-12-10 03:43:44');
+(1, 'blog-image', 'upload-6a992d5529f459a44fee58c733255e86.jpg', '2013-12-14 21:30:31', '2013-12-14 21:30:31'),
+(1, 'likes', '["1","11","49","48","47","50","52","55","60","62"]', '2013-11-19 11:56:25', '2013-12-14 01:41:24'),
+(1, 'upload-6a992d5529f459a44fee58c733255e86.jpg', 'upload-6a992d5529f459a44fee58c733255e86.jpg', '2013-12-14 20:50:02', '2013-12-14 20:50:02'),
+(1, 'upload-6a992d5529f459a44fee58c733255e8647.jpg', 'upload-6a992d5529f459a44fee58c733255e8647.jpg', '2013-12-14 21:27:41', '2013-12-14 21:27:41'),
+(1, 'upload-8df17c77af23061ef4322d47d6c431fa.jpg', 'upload-8df17c77af23061ef4322d47d6c431fa.jpg', '2013-12-14 20:50:17', '2013-12-14 20:50:17'),
+(1, 'upload-8df17c77af23061ef4322d47d6c431fa94.jpg', 'upload-8df17c77af23061ef4322d47d6c431fa94.jpg', '2013-12-14 21:28:02', '2013-12-14 21:28:02'),
+(7, 'likes', '{"0":"42","1":"47","3":"48","4":"45"}', '2013-12-10 01:01:21', '2013-12-10 03:43:44'),
+(7, 'upload-dc0945a57cb219c782069b9f0095acf0.jpg', 'upload-dc0945a57cb219c782069b9f0095acf0.jpg', '2013-12-14 22:43:50', '2013-12-14 22:43:50');
 
 -- --------------------------------------------------------
 

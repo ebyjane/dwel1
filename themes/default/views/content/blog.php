@@ -8,7 +8,24 @@
 			<p style="text-align:center;"><?php echo CHtml::image(Yii::app()->baseUrl . $meta['blog-image']['value'], NULL, array('class'=>'image')); ?></p>
 		<?php endif; ?>
 		<div class="post-inner">
-			<div class="post-header">
+	<div style="float:left;width:50px;position:relative">
+	
+	<?php //echo $content->author->id; 
+							$model  = Users::model();
+							$id = $content->author->id;
+							$key = "blog-image";
+							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							//echo count($image_data);
+							if(count($image_data)>0){
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+							}else{
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+							}	
+	
+	?>
+	</div>	
+
+			<div class="post-header" style="position:relative;float:left;width:100%">
 				<h3 class="pull-left"><?php /*echo CHtml::link(CHtml::encode($content->title), Yii::app()->createUrl($content->slug));*/ ?></h3>
 				<div class="likes-container likes-container--topfix pull-right">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
@@ -126,6 +143,17 @@
 		</div>
 	</div>
 </div>
+<style type="text/css">
+main .post .blog-meta{
+padding-left:50px;
+}
+main .likes-container--topfix {
+    margin-top: 0px;
+    position: absolute;
+    right: 0;
+    top: -27px;
+}
+</style>
 
 
 <?php Yii::app()->clientScript->registerScript('comment-box', '
@@ -227,3 +255,4 @@ $this->widget('ext.timeago.JTimeAgo', array(
     'selector' => ' .timeago',
 ));
 ?>
+

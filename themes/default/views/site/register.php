@@ -82,7 +82,9 @@
 		</div>
 	</div>
 </div>
-
+<style type="text/css">
+.sidebar{background:none}
+</style>
 <?php $asset=Yii::app()->assetManager->publish(YiiBase::getPathOfAlias('webroot.themes.default.assets')); ?>
 <?php Yii::app()->clientScript->registerScriptFile($asset .'/js/zxcvbn.js'); ?>
 <?php Yii::app()->clientScript->registerScript('password_strength_meter', '

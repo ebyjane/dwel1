@@ -30,7 +30,7 @@ $list = CHtml::listData($models,
         	<?php endif; ?>
 <label class="advice-label">Ask for Advice!</label>
 <textarea style="height:20px;width:60%" id="textbox"></textarea>        	
-					<?php echo CHtml::dropDownList('categories', $category, 
+					<?php echo CHtml::dropDownList('categories', $categories,
               $list,
               array('empty' => 'Select a category'));
 ?>
@@ -38,42 +38,25 @@ $list = CHtml::listData($models,
 			<a href="#" class="btn btn-ask" id="submit-comment">Ask</a>
 		<?php $this->endWidget(); ?>
 		<br/>
-    <?php foreach($data as $content): ?>
-    	<?php $this->renderPartial('//content/_post', array('content' => $content)); ?>
-		
-    <?php endforeach; ?>
+
+<div id="posts">
+<?php foreach($data as $content): ?>
+    <div class="post">
+<?php 
+$this->renderPartial('//content/_post', array('content' => $content)); ?>
+    </div>
+<?php endforeach; ?>
 </div>
+<?php $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
+    'contentSelector' => '#posts',
+    'itemSelector' => '#posts div.post',
+    'loadingText' => 'Loading...',
+    'donetext' => 'This is the end of dweling questions..',
+    'pages' => $pages,
+)); ?>
 
-<?php if (count($data)): ?>
-	<?php $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
-	    'url'=>isset($url) ? $url : 'blog',
-	    'contentSelector' => '#posts',
-	    'pages' => $pages,
-	    'defaultCallback' => "js:function(response, data) { 
-	    	var url = response.options.path.join(response.options.state.currPage);
-
-	    	// Try GA Tracking
-	    	try {
-			    _gaq.push(['_trackPageview', url]);
-			} catch (e) {
-				// Don't do anything if the tracking event failed
-			}
-
-			// Try Piwik Tracking
-			try {
-			    _paq.push(['trackPageView', url]);
-			} catch (e) {
-				// Don't do anything if the tracking event failed
-			}			    
- 		}"
-	)); ?>
-	<?php Yii::app()->clientScript->registerScript('unbind-infinite-scroll', "$(window).unbind('.infscr');"); ?>
-<?php else: ?>
-<div id="content-container"></div>
-	<div class="alert alert-info">
-		<strong>Woah!</strong> It looks like there isn't any posts in this category yet. Why don't you check out some of our other pages or check back later?
-	</div>
-<?php endif; ?>
+</div>
+       
 
 
 <?php Yii::app()->clientScript->registerScript('ask-question', '
@@ -90,8 +73,7 @@ $list = CHtml::listData($models,
 			$("div#warning").fadeIn();
             return;
 		}	
-			alert("we are here");
-			alert($("#categories :selected").val());
+			//alert($("#categories :selected").val());
 
         $.post("/dwel1/content/content", 
         	{ 
@@ -139,6 +121,7 @@ $list = CHtml::listData($models,
 	});
 ')->registerScript('fetchContent', '
 	$.post("' . $this->createUrl('/content/getContent/id/' . $content->id) . '", function(data) {
+	//alert(data);
 
 	});
 ');

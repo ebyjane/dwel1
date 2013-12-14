@@ -6,10 +6,27 @@
 
 		
 	<?php endif; ?>
+
 	
 
-	<div class="post-inner">
-		<div class="post-header">
+	<div class="post-inner" >
+	<div style="float:left;width:50px;position:relative">
+	
+	<?php //echo $content->author->id; 
+							$model  = Users::model();
+							$id = $content->author->id;
+							$key = "blog-image";
+							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							//echo count($image_data);
+							if(count($image_data)>0){
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+							}else{
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+							}	
+	
+	?>
+	</div>	
+	<div class="post-header">
 				<div class="likes-container likes-container--topfix pull-right" style="top:-18px;right:140px;position:absolute">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
 					    <a href="#" id="upvote" title="Like this post and discussion">
@@ -23,6 +40,7 @@
 				</div>
 			<?php $md = new CMarkdownParser; echo strip_tags($md->safeTransform($content->extract), '<h1><h2><h3><h4><h5><6h><p><b><strong><i>'); ?>
 		</div>
+		
 		<div class="blog-meta">
 			<span class="date"><?php echo $content->getCreatedFormatted() ?></span>
 			<span class="separator">⋅</span>
@@ -68,9 +86,24 @@
 		foreach($comments as $k=>$val){
 		?>
 			<div class="green-indicator author-indicator">
+	<div style="float:left;width:50px;position:relative">
+	
+	<?php //echo $content->author->id; 
+							$model  = Users::model();
+							$id = $val['user_id'];
+							$key = "blog-image";
+							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							//echo count($image_data);
+							if(count($image_data)>0){
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+							}else{
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+							}	
+	
+	?>
+	</div>				
 		<div class="comment-body">
-		    			    <p><p><?php echo $val['comment']; ?><p></p>
-					</div>
+		    			    <p style="padding-bottom:5px"><?php echo $val['comment']; ?></p>				</div>
 	</div>		
 <?php
 		}
@@ -89,3 +122,8 @@
 
     <div style="clear:both;"><br /></div>
 </div>
+<style type="text/css">
+main .post .blog-meta{
+padding-left:50px;
+}
+</style>

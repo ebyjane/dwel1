@@ -98,7 +98,7 @@
 							               'onComplete' => "js:function(id, fileName, response) {
 							               		if (response.success)
 							               		{
-							               			$('#new-attachment').before('<span class=\"thumb-container thumb-center\"><span class=\"thumb-inner\"><span class=\"thumb-img\"><img class=\"thumb\" href=\"'+ response.filepath +'\" src=\"'+ response.filepath +'\" style=\"left: 0px; top: 0px;\"></span><span class=\"thumb-strip\"></span><span class=\"thumb-icon\"></span></span></span>').after('<li id=\"new-attachment\" style=\"display:none;\">');
+							               			$('#new-attachment').before('<span class=\"thumb-container thumb-center\"><span class=\"thumb-inner\"><span class=\"thumb-img\"><img class=\"thumb\" href=\"/dwel1/'+ response.filepath +'\" src=\"/dwel1/'+ response.filepath +'\" style=\"left: 0px; top: 0px;\"></span><span class=\"thumb-strip\"></span><span class=\"thumb-icon\"></span></span></span>').after('<li id=\"new-attachment\" style=\"display:none;\">');
 							               			$('.thumb').thumbs();
 													$('.thumb').colorbox({rel:'thumb'});
 													$('#new-attachment-img').show().attr('id', 'thumb');

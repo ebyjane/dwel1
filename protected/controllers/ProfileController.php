@@ -58,7 +58,7 @@ class ProfileController extends CiiController
 	{
 		return array(
 			array('allow',  // Allow all users to any section
-				'actions' => array('index', 'badges'),
+				'actions' => array('index', 'badges', 'removeImage', 'promoteImage'),
 				'users'=>array('*'),
 			),
 			array('allow',  // deny all users
@@ -145,17 +145,151 @@ class ProfileController extends CiiController
 				Yii::app()->user->setFlash('warning', 'There were errors saving your profile. Please correct them before trying to save again.');
 			}
 		}
+		$id = Yii::app()->user->id;
+		
+		$attachmentCriteria = new CDbCriteria(array(
+		    'condition' => "user_id = {$id} AND (t.key LIKE 'upload-%' OR t.key = 'blog-image')",
+		    'order'     => 't.key ASC',
+		    'group'     => 't.value'
+		));
+        
+		$attachments = $id != NULL ? UserMetadata::model()->findAll($attachmentCriteria) : NULL;		
 
-		$this->render('edit', array('model' => $model));
+		//$this->render('edit', array('model' => $model));
+		$this->render('edit',array(
+			'model'          =>  $model,
+			'id'             =>  $id,
+			'attachments' 	 =>  $attachments
+		));		
+		
 	}
 
 	/**
 	 * Provides functionality for a user to show their badges and awards that they have earned
 	 */
-	public function actionBadges()
+	public function actionBadges($id)
 	{
+
 		$model = Users::model()->findByPk(Yii::app()->user->id);
+if (Yii::app()->request->isPostRequest)
+		{
+			Yii::import("ext.EAjaxUpload.qqFileUploader");
+			$path = '/';
+	        $folder=Yii::app()->getBasePath() .'/../uploads' . $path;// folder for uploaded files
+	        $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif', 'bmp');//array("jpg","jpeg","gif","exe","mov" and etc...
+	        $sizeLimit = 10 * 1024 * 1024;// maximum file size in bytes
+	        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+	        $result = $uploader->handleUpload($folder);
+
+			
+			if ($result['success'] = true)
+			{
+				$meta = UserMetadata::model()->findbyAttributes(array('user_id' => $id, 'key' => $result['filename']));
+
+				if ($meta == NULL)
+					$meta = new UserMetadata;
+
+				/*$meta->user_id = $id;
+				$meta->key = $result['filename'];
+				$meta->value = '/dwel1/uploads' . $path . $result['filename'];*/
+				$meta->user_id = $id;
+				$meta->key = $result['filename'];
+				$meta->value = $result['filename'];
+				
+				$meta->save();
+				$result['filepath'] = '/uploads/' . $result['filename'];
+			}
+	        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+ 
+        echo $return;
+		}	
+		Yii::app()->end();	
 		
 		$this->render('badges', array('model' => $model));
 	}
+	
+	public function actionUpload($id)
+	{
+	echo "we are here";
+	exit();
+		if (Yii::app()->request->isPostRequest)
+		{
+			Yii::import("ext.EAjaxUpload.qqFileUploader");
+			$path = '/';
+	        $folder=Yii::app()->getBasePath() .'/../uploads' . $path;// folder for uploaded files
+	        $allowedExtensions = array('jpg', 'jpeg', 'png', 'gif', 'bmp');//array("jpg","jpeg","gif","exe","mov" and etc...
+	        $sizeLimit = 10 * 1024 * 1024;// maximum file size in bytes
+	        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+	        $result = $uploader->handleUpload($folder);
+			
+			if ($result['success'] = true)
+			{
+				$meta = ContentMetadata::model()->findbyAttributes(array('content_id' => $id, 'key' => $result['filename']));
+				if ($meta == NULL)
+					$meta = new ContentMetadata;
+				$meta->content_id = $id;
+				$meta->key = $result['filename'];
+				$meta->value = '/dwel1/uploads' . $path . $result['filename'];
+				$meta->save();
+				$result['filepath'] = '/uploads/' . $result['filename'];
+			}
+	        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+ 
+        echo $return;
+		}	
+		Yii::app()->end();	
+	}
+
+  /**
+     * Removes an image from a given post
+     */
+    public function actionRemoveImage()
+    {
+        $id     = Cii::get($_POST, 'id');
+        $key    = Cii::get($_POST, 'key');
+        
+        // Only proceed if we have valid date
+        if ($id == NULL || $key == NULL)
+            throw new CHttpException(403, 'Insufficient data provided. Invalid request');
+        
+        $model = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+        if ($model === NULL)
+            throw new CHttpException(403, 'Cannot delete attribute that does not exist');
+        
+        return $model->delete();
+    }
+    
+    /**
+     * Promotes an image to blog-image
+     */
+    public function actionPromoteImage()
+    {
+        $id          = Cii::get($_POST, 'id');
+        $key         = Cii::get($_POST, 'key');
+        $promotedKey = 'blog-image';
+        // Only proceed if we have valid date
+        if ($id == NULL || $key == NULL)
+            return false;
+        
+        $model = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+        
+        // If the current model is already blog-image, return true (consider it a successful promotion, even though we didn't do anything)
+        if ($model->key == $promotedKey)
+            return true;
+        
+        $model2 = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $promotedKey));
+        if ($model2 === NULL)
+        {
+            $model2 = new UserMetadata;
+            $model2->user_id = $id;
+            $model2->key = $promotedKey;
+        }
+        
+        $model2->value = $model->value;
+        
+        if (!$model2->save())
+            throw new CHttpException(403, 'Unable to promote image');
+        
+        return true;
+    }	
 }

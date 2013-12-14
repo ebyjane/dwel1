@@ -1,6 +1,6 @@
 <div class="login-container">
 	<div class="sidebar">
-		<div class="well-span">
+		<div class="well-span"><ul class="login-wrap clearfix" id="login-icon"><li class="login"><a class="iframe" href="#">&nbsp;</a></li></ul>
 			<h4>Login to Your Account</h4>
 			<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 						'id'					=>	'login-form',
@@ -58,3 +58,18 @@
 		</div>
 	</div>
 </div>
+<style type="text/css">
+.sidebar{background:none}
+main .sidebar .well h4:before, main .sidebar .well-span h4:before {
+    color: #7DAF27;
+    content: "";
+	padding-left:20px;
+}
+.login-wrap .login a {
+    background-position: 0 -21px;
+}
+#login-icon{
+position:relative;
+left:-360px;
+}
+</style>

@@ -22,7 +22,22 @@ $this->widget('bootstrap.widgets.TbAlert', array(
                 <tbody>
                 	<tr>
 	                    <td style="padding-left: 0px;" rowspan="2">
-	                    	<?php echo CHtml::image($model->gravatarImage(50)); ?>
+	                    	<?php 
+							$url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+							$urlarray=explode("/",$url);
+							$end=$urlarray[count($urlarray)-2];
+
+
+							$id = $end;
+							$key = "blog-image";
+							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							//echo count($image_data);
+							if(count($image_data)>0){
+								echo CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)); 
+							}else{							
+								echo CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")); 
+							}
+							?>
 	                    </td>
 	                    <td style="padding-left: 10px;"><strong><?php echo $contentCount; ?></strong> Post(s)</td>
 	                    <th><em>bio</em></th>
@@ -84,6 +99,7 @@ $this->widget('bootstrap.widgets.TbAlert', array(
 <style>
  	main .main-body { margin-left: 0px; }
  	table td, table th { padding: 0px; padding-left: 5px; font-size: 12px; color: #777; }
+.sidebar {background:none}	
 </style>
 <?php $this->widget('ext.timeago.JTimeAgo', array(
     'selector' => ' .timeago',

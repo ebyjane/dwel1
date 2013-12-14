@@ -1,4 +1,4 @@
-   <?php 		$content = array();
+   <?php 		$content = array(); echo "we are here";
 		$pages = array();
 		$itemCount = 0;
 		$pageSize = Cii::getConfig('contentPaginationSize', 1);	

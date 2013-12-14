@@ -253,7 +253,7 @@ class ContentController extends ACiiController
 					$meta = new ContentMetadata;
 				$meta->content_id = $id;
 				$meta->key = $result['filename'];
-				$meta->value = '/uploads' . $path . $result['filename'];
+				$meta->value = '/dwel1/uploads' . $path . $result['filename'];
 				$meta->save();
 				$result['filepath'] = '/uploads/' . $result['filename'];
 			}
