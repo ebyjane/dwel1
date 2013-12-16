@@ -18,6 +18,7 @@
  * @property string $password
  * @property integer $comment_count
  * @property integer $like_count
+ * @property integer $dislike_count
  * @property string $slug
  * @property string $created
  * @property string $updated
@@ -74,11 +75,11 @@ class Content extends CiiModel
 		// will receive user inputs.
 		return array(
 			array('vid, author_id, title, content, status, commentable, parent_id, category_id', 'required'),
-			array('vid, author_id, status, commentable, parent_id, category_id, type_id, comment_count, like_count', 'numerical', 'integerOnly'=>true),
+			array('vid, author_id, status, commentable, parent_id, category_id, type_id, comment_count, like_count, dislike_count', 'numerical', 'integerOnly'=>true),
 			array('title, password, slug', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, vid, author_id, title, content, extract, status, commentable, parent_id, category_id, type_id, password, comment_count, like_count, slug, created, updated', 'safe', 'on'=>'search'),
+			array('id, vid, author_id, title, content, extract, status, commentable, parent_id, category_id, type_id, password, comment_count, like_count, dislike_count,slug, created, updated', 'safe', 'on'=>'search'),
 		);
 	}
 	
@@ -118,6 +119,7 @@ class Content extends CiiModel
 			'password' => 'Password',
 			'comment_count' => 'Comments',
 			'like_count' => 'Likes',
+			'dislike_count' => 'Dislike',
 			'tags' => 'Tags',
 			'slug' => 'Slug',
 			'created' => 'Created',

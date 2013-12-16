@@ -29,15 +29,24 @@
 	<div class="post-header">
 				<div class="likes-container likes-container--topfix pull-right" style="top:-18px;right:140px;position:absolute">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
-					    <a href="#" id="upvote" title="Like this post and discussion">
+					    <a  onclick=testClick("like-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Like this post and discussion">
 							<span class="counter">
 					            <span id="like-count-<?php echo $content->id; ?>"><?php echo $content->like_count; ?></span>
 					        </span> 
 					    	<span class="icon-thumbs-up icon-yellow"></span>
 					             
 					    </a>
+					    <a  onclick=dislike("dislike-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Dislike this post and discussion">
+							<span class="counter">
+					            <span id="dislike-count-<?php echo $content->id; ?>"><?php echo $content->dislike_count; ?></span>
+					        </span> 
+					    	<span class="icon-thumbs-down icon-red"></span>
+					             
+					    </a>						
 					</div>
 				</div>
+
+				
 			<?php $md = new CMarkdownParser; echo strip_tags($md->safeTransform($content->extract), '<h1><h2><h3><h4><h5><6h><p><b><strong><i>'); ?>
 		</div>
 		
@@ -127,3 +136,4 @@ main .post .blog-meta{
 padding-left:50px;
 }
 </style>
+

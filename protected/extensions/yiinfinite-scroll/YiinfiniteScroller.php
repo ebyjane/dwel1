@@ -14,7 +14,7 @@
 class YiinfiniteScroller extends CBasePager {
 
     public $contentSelector = '#content';
-    public $navigationLinkText = 'next';
+    public $navigationLinkText = 'Scroll down to see more questions or click here';
 
     private $_options = array(
 		'url'           => null,
