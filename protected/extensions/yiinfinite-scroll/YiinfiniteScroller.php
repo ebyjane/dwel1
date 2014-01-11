@@ -14,7 +14,8 @@
 class YiinfiniteScroller extends CBasePager {
 
     public $contentSelector = '#content';
-    public $navigationLinkText = 'Scroll down to see more questions or click here';
+    //public $navigationLinkText = 'Scroll down to see more questions or click here';
+	public $navigationLinkText = '';
 
     private $_options = array(
 		'url'           => null,
@@ -91,7 +92,8 @@ class YiinfiniteScroller extends CBasePager {
 
     private function renderNavigation() {
         $next_link = CHtml::link($this->navigationLinkText, $this->createPageUrl($this->currentPage+1));
-        echo '<div class="infinite_navigation">'.$next_link.'</div>';
+       // echo '<div class="infinite_navigation">'.$next_link.'</div>';
+	    echo '<div class="infinite_navigation" style="border:0px;height:0px;min-height:0px;box-shadow:0;margin:0;padding:0">'.$next_link.'</div>';
     }
 
     private function currentPageDoesntExists() {

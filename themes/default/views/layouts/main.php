@@ -24,6 +24,30 @@ Yii::app()->clientScript->registerCssFile($asset.'/css/colorbox.css');	*/
 		<!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+<style type="text/css">
+main .post .blog-meta{
+padding-left:50px;
+}
+main .likes a {
+background:none;
+color:#000000;
+font-weight:bold;
+font-size:11px;
+}
+main .likes a:hover {
+background:none;
+color:#000000;
+font-weight:bold;
+font-size:11px;
+}
+main .likes.liked a, main .likes.liked a:hover {
+background:none;
+color:#000000;
+font-weight:bold;
+font-size:11px;
+
+}
+</style>		
 	</head>
 	<body>
     <header>

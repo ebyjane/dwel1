@@ -1,6 +1,9 @@
-<?php $meta = Content::model()->parseMeta($content->metadata); ?>
+<?php 
+//echo "content value = ".$content->content;
+$meta = Content::model()->parseMeta($content->metadata); ?>
+
 <div id="content-container"></div>
-<div class="post">
+
 	<?php if (Cii::get(Cii::get($meta, 'blog-image', array()), 'value', '') != ""): ?>
 		<p style="text-align:center;"><?php echo CHtml::image(Yii::app()->baseUrl . $meta['blog-image']['value'], NULL, array('class'=>'image')); ?></p>
 
@@ -27,27 +30,11 @@
 	?>
 	</div>	
 	<div class="post-header">
-				<div class="likes-container likes-container--topfix pull-right" style="top:-18px;right:140px;position:absolute">
-					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
-					    <a  onclick=testClick("like-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Like this post and discussion">
-							<span class="counter">
-					            <span id="like-count-<?php echo $content->id; ?>"><?php echo $content->like_count; ?></span>
-					        </span> 
-					    	<span class="icon-thumbs-up icon-yellow"></span>
-					             
-					    </a>
-					    <a  onclick=dislike("dislike-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Dislike this post and discussion">
-							<span class="counter">
-					            <span id="dislike-count-<?php echo $content->id; ?>"><?php echo $content->dislike_count; ?></span>
-					        </span> 
-					    	<span class="icon-thumbs-down icon-red"></span>
-					             
-					    </a>						
-					</div>
-				</div>
 
-				
+
+			<a href="<?php echo $this->createUrl('/' . $content->slug); ?>" rel="bookmark">	
 			<?php $md = new CMarkdownParser; echo strip_tags($md->safeTransform($content->extract), '<h1><h2><h3><h4><h5><6h><p><b><strong><i>'); ?>
+			</a>
 		</div>
 		
 		<div class="blog-meta">
@@ -68,6 +55,35 @@
 			</span> 					
 			<span class="comment-container">
 				<?php echo $content->getCommentCount(); ?> Comments</a>					
+			</span>
+			<span class="separator">⋅</span> 
+			<span class="comment-container">
+<span class="likes-container" style="position:absolute;top:-4px;padding-left:120px">
+					<div style="float:left" class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
+					    <div  style="position:absolute;right:60px;width:50px">
+						<a  onclick=testClick("like-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Like this post and discussion">
+							<span class="icon-thumbs-up icon-yellow"></span>
+							<span class="counter">
+					            <span style="font-family:arial;font-size:12px;font-weight:normal;color:#000000;background:none" id="like-count-<?php echo $content->id; ?>">&nbsp;&nbsp;<?php echo $content->like_count; ?> 
+								</span>
+					        </span> 	    	
+					             
+					    </a>&nbsp;&nbsp;
+						</div>
+						
+						<div style="position:absolute;right:0px;width:50px">
+						 <a  onclick=dislike("dislike-count-<?php echo $content->id; ?>"); style="cursor:pointer"   id="upvote" title="Dislike this post and discussion">
+							<span class="icon-thumbs-down icon-red"></span>
+							<span class="counter">
+					            <span style="font-family:arial;font-size:12px;font-weight:normal;color:#000000" id="dislike-count-<?php echo $content->id; ?>"><?php echo $content->dislike_count; ?></span>
+					        </span> 
+					    	
+					             
+					    </a>
+						</div>
+						
+					</div>
+				</span>				
 			</span>
 			
 						<?php 
@@ -130,10 +146,6 @@
 	</div>
 
     <div style="clear:both;"><br /></div>
-</div>
-<style type="text/css">
-main .post .blog-meta{
-padding-left:50px;
-}
-</style>
+
+
 

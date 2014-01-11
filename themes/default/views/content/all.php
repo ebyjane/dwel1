@@ -29,15 +29,15 @@ function testClick(idVal){
 }
 
 function dislike(idVal){
-	alert('test click');
-	alert(idVal);
+	//alert('test click');
+	//alert(idVal);
 	var id = idVal.split("-");		
 	var url = "/content/dislike/id/"+id[2];
 	var idData = id[2];
-	alert(idData);
+	//alert(idData);
 
 	$.post("/dwel1/content/dislike/id/"+idData, function(data, textStatus, jqXHR) {
-	alert(data.status);
+	//alert(data.status);
 		if (data.status == undefined)
 			window.location = "<?php echo $this->createUrl('/login'); ?>"
 
@@ -57,6 +57,7 @@ function dislike(idVal){
 	return false;					
 }
 </script>
+
 <div id="posts">
 		<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'ask',
@@ -99,15 +100,20 @@ $list = CHtml::listData($models,
 
 <div id="posts">
 <?php foreach($data as $content): ?>
+
+<?php 
+if($content->content!=""){?>
     <div class="post">
 <?php 
 $this->renderPartial('//content/_post', array('content' => $content)); ?>
     </div>
-<?php endforeach; ?>
+<?php } ?>
+	
+<?php  endforeach; ?>
 </div>
 <?php $this->widget('ext.yiinfinite-scroll.YiinfiniteScroller', array(
     'contentSelector' => '#posts',
-    'itemSelector' => '#posts div.post',
+    /*'itemSelector' => '#posts div.post',*/
     'loadingText' => 'Loading...',
     'donetext' => 'This is the end of dweling questions..',
     'pages' => $pages,

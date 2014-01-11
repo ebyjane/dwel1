@@ -127,7 +127,6 @@ class ContentController extends CiiController
 	 **/
 	public function actionIndex($id=NULL)
 	{
-
 		// Run a pre check of our data
 		$requestUri = $this->beforeCiiAction($id);
 		
@@ -355,16 +354,16 @@ class ContentController extends CiiController
 	 */
 	public function actionList()
 	{
+
 		$this->setPageTitle('All Content');
 		$this->setLayout('default');
-		
-		$this->breadcrumbs = array('Blogroll');
+		//$this->breadcrumbs = array('Blogroll');
 		
 		$data = array();
 		$pages = array();
 		$itemCount = 0;
-		$pageSize = Cii::getConfig('contentPaginationSize', 1);
-		
+		$pageSize = Cii::getConfig('contentPaginationSize', 5);
+	
 		$criteria=new CDbCriteria;
         $criteria->order = 'created DESC';
         $criteria->limit = $pageSize;
@@ -380,7 +379,6 @@ class ContentController extends CiiController
 		$criteria->offset = $criteria->limit*($pages->getCurrentPage());
 		$data = Content::model()->findAll($criteria);
 		$pages->applyLimit($criteria);
-		
 		$this->render('all', array('data'=>$data, 'itemCount'=>$itemCount, 'pages'=>$pages));
 	}
 	
