@@ -486,6 +486,13 @@ class SiteController extends CiiController
 		$this->setPageTitle(Yii::app()->name . ' | Privacy Policy');
 		$this->layout = '//layouts/main';
 		$this->render('privacy');
+	}
+
+	public function actionContact()
+	{
+		$this->setPageTitle(Yii::app()->name . ' | Contact Us');
+		$this->layout = '//layouts/main';
+		$this->render('contact');
 	}	
 
     /**

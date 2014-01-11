@@ -127,13 +127,18 @@ font-size:11px;
 		if($end=='events'){$events=array('class'=>'active');}else{$events="";}
 		if($end=='about'){$about=array('class'=>'active');}else{$about="";}
 		if($end=='contact'){$contact=array('class'=>'active');}else{$contact="";}
+		if($end=='privacy'){$privacy=array('class'=>'active');}else{$privacy="";}
+		if($end=='terms'){$terms=array('class'=>'active');}else{$terms="";}
 		?>	
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Ask for Advice', 'url'=>array('/'),'linkOptions'=>$advice),
 				array('label'=>'Buy & Sell', 'url'=>array('/site/buy'),'linkOptions'=>$buy),
-				array('label'=>'Events', 'url'=>array('/site/events'),'linkOptions'=>$events),
-				/*array('label'=>'About Us', 'url'=>array('/site/about'),'linkOptions'=>$about),
+				array('label'=>'Contact Us', 'url'=>array('/site/contact'),'linkOptions'=>$contact),
+				array('label'=>'Privacy Policy', 'url'=>array('/site/privacy'),'linkOptions'=>$privacy),
+				array('label'=>'Terms & Conditions', 'url'=>array('/site/terms'),'linkOptions'=>$terms),
+				/*array('label'=>'Events', 'url'=>array('/site/events'),'linkOptions'=>$events),
+				array('label'=>'About Us', 'url'=>array('/site/about'),'linkOptions'=>$about),
 				array('label'=>'Contact Us', 'url'=>array('/site/contact'),'linkOptions'=>$contact),*/
 			),
 		)); ?>				
