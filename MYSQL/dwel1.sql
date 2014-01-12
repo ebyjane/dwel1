@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2013 at 08:16 PM
+-- Generation Time: Dec 16, 2013 at 09:22 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -170,6 +170,7 @@ CREATE TABLE IF NOT EXISTS `content` (
   `password` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `comment_count` int(15) NOT NULL DEFAULT '0',
   `like_count` int(11) NOT NULL DEFAULT '0',
+  `dislike_count` int(11) NOT NULL DEFAULT '0',
   `slug` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
@@ -184,28 +185,28 @@ CREATE TABLE IF NOT EXISTS `content` (
 -- Dumping data for table `content`
 --
 
-INSERT INTO `content` (`id`, `vid`, `author_id`, `title`, `content`, `extract`, `status`, `commentable`, `parent_id`, `category_id`, `type_id`, `password`, `comment_count`, `like_count`, `slug`, `created`, `updated`) VALUES
-(52, 1, 1, 'Food & Beverage', 'Can someone tell me where i can get good food in bangalore?', 'Can someone tell me where i can get good food in bangalore?', 1, 1, 1, 12, 2, '', 2, 1, 'food---beverage1', '2013-12-13 21:24:49', '2013-12-13 21:26:21'),
-(53, 1, 1, 'Travel & Tourism', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 1, 1, 1, 6, 2, '', 4, 0, 'travel---tourism1', '2013-12-13 21:29:38', '2013-12-13 21:31:43'),
-(54, 1, 1, 'Education & Development', 'Which is the best school in bangalore?', 'Which is the best school in bangalore?', 1, 1, 1, 2, 2, '', 0, 0, 'education---development1', '2013-12-13 21:32:54', '2013-12-13 21:32:54'),
-(55, 1, 1, 'Fitness & Style', 'Can anyone tell me where is the gym in electronic city?', 'Can anyone tell me where is the gym in electronic city?', 1, 1, 1, 7, 2, '', 9, 1, 'fitness---style1', '2013-12-13 21:33:28', '2013-12-15 00:45:59'),
-(56, 1, 1, 'News & Events', 'Can someone tell me the events happening this weekend?', 'Can someone tell me the events happening this weekend?', 1, 1, 1, 10, 2, '', 0, 0, 'news---events1', '2013-12-13 21:35:45', '2013-12-13 21:35:45'),
-(57, 1, 1, 'Health & Beauty', 'Can someone tell me where is beauty parlour in electronic city?', 'Can someone tell me where is beauty parlour in electronic city?', 1, 1, 1, 5, 2, '', 0, 0, 'health---beauty1', '2013-12-13 21:36:25', '2013-12-13 21:36:25'),
-(58, 1, 1, 'Pets', 'where can i buy a Pomeranian pet in bangalore?', 'where can i buy a Pomeranian pet in bangalore?', 1, 1, 1, 9, 2, '', 0, 0, 'pets1', '2013-12-13 21:37:46', '2013-12-13 21:37:46'),
-(59, 1, 1, 'Law & Rules', 'where is the court in bangalore?', 'where is the court in bangalore?', 1, 1, 1, 15, 2, '', 0, 0, 'law---rules1', '2013-12-13 21:38:09', '2013-12-13 21:38:09'),
-(60, 1, 1, 'Politics & Government', 'I think BJP will be making the next government? What you guys think?', 'I think BJP will be making the next government? What you guys think?', 1, 1, 1, 16, 2, '', 0, 1, 'politics---government1', '2013-12-13 21:39:05', '2013-12-13 21:39:31'),
-(61, 1, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-13 21:42:20'),
-(61, 2, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 01:45:52'),
-(61, 3, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:05'),
-(61, 4, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:46'),
-(61, 5, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:06:05'),
-(61, 6, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:11:16'),
-(61, 7, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:59:05'),
-(61, 8, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 03:29:29'),
-(61, 9, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 20:42:07'),
-(61, 10, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 20:42:25'),
-(62, 1, 1, 'Sports', 'Can anyone let me know where the bangalore marathon is going to be this year?', 'Can anyone let me know where the bangalore marathon is going to be this year?', 1, 1, 1, 4, 2, '', 0, 1, 'sports1', '2013-12-13 21:43:16', '2013-12-14 01:41:24'),
-(63, 7, 7, 'Politics & Government', 'Who will win in coming election? BJP or Congress?', 'Who will win in coming election? BJP or Congress?', 1, 1, 1, 16, 2, '', 0, 0, 'politics---government2', '2013-12-14 22:42:26', '2013-12-14 22:42:26');
+INSERT INTO `content` (`id`, `vid`, `author_id`, `title`, `content`, `extract`, `status`, `commentable`, `parent_id`, `category_id`, `type_id`, `password`, `comment_count`, `like_count`, `dislike_count`, `slug`, `created`, `updated`) VALUES
+(52, 1, 1, 'Food & Beverage', 'Can someone tell me where i can get good food in bangalore?', 'Can someone tell me where i can get good food in bangalore?', 1, 1, 1, 12, 2, '', 2, 0, 0, 'food---beverage1', '2013-12-13 21:24:49', '2013-12-13 21:26:21'),
+(53, 1, 1, 'Travel & Tourism', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 'Iam planning to go to hubli. Can anyone suggest the better way of travelling?', 1, 1, 1, 6, 2, '', 4, 0, 0, 'travel---tourism1', '2013-12-13 21:29:38', '2013-12-13 21:31:43'),
+(54, 1, 1, 'Education & Development', 'Which is the best school in bangalore?', 'Which is the best school in bangalore?', 1, 1, 1, 2, 2, '', 0, 0, 0, 'education---development1', '2013-12-13 21:32:54', '2013-12-17 00:59:21'),
+(55, 1, 1, 'Fitness & Style', 'Can anyone tell me where is the gym in electronic city?', 'Can anyone tell me where is the gym in electronic city?', 1, 1, 1, 7, 2, '', 9, 0, 0, 'fitness---style1', '2013-12-13 21:33:28', '2013-12-15 00:45:59'),
+(56, 1, 1, 'News & Events', 'Can someone tell me the events happening this weekend?', 'Can someone tell me the events happening this weekend?', 1, 1, 1, 10, 2, '', 0, 0, 0, 'news---events1', '2013-12-13 21:35:45', '2013-12-13 21:35:45'),
+(57, 1, 1, 'Health & Beauty', 'Can someone tell me where is beauty parlour in electronic city?', 'Can someone tell me where is beauty parlour in electronic city?', 1, 1, 1, 5, 2, '', 0, 0, 0, 'health---beauty1', '2013-12-13 21:36:25', '2013-12-13 21:36:25'),
+(58, 1, 1, 'Pets', 'where can i buy a Pomeranian pet in bangalore?', 'where can i buy a Pomeranian pet in bangalore?', 1, 1, 1, 9, 2, '', 0, 0, 0, 'pets1', '2013-12-13 21:37:46', '2013-12-17 00:51:51'),
+(59, 1, 1, 'Law & Rules', 'where is the court in bangalore?', 'where is the court in bangalore?', 1, 1, 1, 15, 2, '', 0, 1, 0, 'law---rules1', '2013-12-13 21:38:09', '2013-12-17 01:08:16'),
+(60, 1, 1, 'Politics & Government', 'I think BJP will be making the next government? What you guys think?', 'I think BJP will be making the next government? What you guys think?', 1, 1, 1, 16, 2, '', 0, 0, 0, 'politics---government1', '2013-12-13 21:39:05', '2013-12-13 21:39:31'),
+(61, 1, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-13 21:42:20'),
+(61, 2, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 01:45:52'),
+(61, 3, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:05'),
+(61, 4, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:02:46'),
+(61, 5, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:06:05'),
+(61, 6, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:11:16'),
+(61, 7, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 02:59:05'),
+(61, 8, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 03:29:29'),
+(61, 9, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-14 20:42:07'),
+(61, 10, 1, 'Technology & Gadgets', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 'Iam planing to buy a tablet from samsung brand. Can anyone suggest, is this good one or can i go for some other brand?', 1, 1, 1, 13, 2, '', 0, 0, 0, 'technology---gadgets1', '2013-12-13 21:42:20', '2013-12-17 01:44:52'),
+(62, 1, 1, 'Sports', 'Can anyone let me know where the bangalore marathon is going to be this year?', 'Can anyone let me know where the bangalore marathon is going to be this year?', 1, 1, 1, 4, 2, '', 0, 0, 1, 'sports1', '2013-12-13 21:43:16', '2013-12-17 01:49:19'),
+(63, 7, 7, 'Politics & Government', 'Who will win in coming election? BJP or Congress?', 'Who will win in coming election? BJP or Congress?', 1, 1, 1, 16, 2, '', 0, 0, 0, 'politics---government2', '2013-12-14 22:42:26', '2013-12-17 01:25:33');
 
 -- --------------------------------------------------------
 
@@ -229,7 +230,6 @@ CREATE TABLE IF NOT EXISTS `content_metadata` (
 
 INSERT INTO `content_metadata` (`content_id`, `key`, `value`, `created`, `updated`) VALUES
 (61, 'blog-image', '/dwel1/uploads/upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '2013-12-14 20:42:22', '2013-12-14 20:42:22'),
-(61, 'upload-5415c7fe534a63366b48d388f204c32817.jpg', '/dwel1/uploads/upload-5415c7fe534a63366b48d388f204c32817.jpg', '2013-12-14 04:42:23', '2013-12-14 04:42:23'),
 (61, 'upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '/dwel1/uploads/upload-5aeb1f62f6cd496dc81c07d58b82f143.jpg', '2013-12-14 03:29:10', '2013-12-14 03:29:10'),
 (61, 'upload-79958cabcbd8ab4afe3279374677ede2.jpg', '/dwel1/uploads/upload-79958cabcbd8ab4afe3279374677ede2.jpg', '2013-12-14 03:30:06', '2013-12-14 03:30:06');
 
@@ -320,8 +320,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstName`, `lastName`, `displayName`, `about`, `user_role`, `status`, `activation_key`, `created`, `updated`) VALUES
-(1, 'eby.jane@gmail.com', '$2y$13$RkRy82Ohpy3Xuy3WIdq0Lu3ySaHnd/P/fKjgkNCn2coWUslHO/HLK', 'eby', 'jane', 'Dweling', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-15 00:39:42'),
-(7, 'eby.jane@yahoo.co.in', '$2y$13$uEkFTjfyVhmmvLtS7it3G.encrCpoVwm4kSg/8eRG20qETaqKOHkS', '', '', 'ebyjane', '', 1, 1, NULL, '2013-12-10 00:58:27', '2013-12-15 00:44:06');
+(1, 'eby.jane@gmail.com', '$2y$13$3G33P5zhNMrgHrn5I4ZHduWXFo.Bxrghiz.SDlBtwbEjO/nImJOWG', 'eby', 'jane', 'Dweling', 'Details about myself', 5, 1, NULL, '2013-11-19 11:54:29', '2013-12-17 00:13:47'),
+(7, 'eby.jane@yahoo.co.in', '$2y$13$S2O2h0yMPT12jkCHiFvfJOfrg78iLZuUaKs034YadpZKwqa6d3APa', '', '', 'ebyjane', '', 1, 1, NULL, '2013-12-10 00:58:27', '2013-12-16 23:08:39');
 
 -- --------------------------------------------------------
 
@@ -360,12 +360,12 @@ CREATE TABLE IF NOT EXISTS `user_metadata` (
 
 INSERT INTO `user_metadata` (`user_id`, `key`, `value`, `created`, `updated`) VALUES
 (1, 'blog-image', 'upload-6a992d5529f459a44fee58c733255e86.jpg', '2013-12-14 21:30:31', '2013-12-14 21:30:31'),
-(1, 'likes', '["1","11","49","48","47","50","52","55","60","62"]', '2013-11-19 11:56:25', '2013-12-14 01:41:24'),
+(1, 'Dislike', '["62"]', '2013-12-17 01:49:19', '2013-12-17 01:49:19'),
+(1, 'likes', '{"1":"59"}', '2013-12-17 01:07:43', '2013-12-17 01:44:52'),
 (1, 'upload-6a992d5529f459a44fee58c733255e86.jpg', 'upload-6a992d5529f459a44fee58c733255e86.jpg', '2013-12-14 20:50:02', '2013-12-14 20:50:02'),
 (1, 'upload-6a992d5529f459a44fee58c733255e8647.jpg', 'upload-6a992d5529f459a44fee58c733255e8647.jpg', '2013-12-14 21:27:41', '2013-12-14 21:27:41'),
 (1, 'upload-8df17c77af23061ef4322d47d6c431fa.jpg', 'upload-8df17c77af23061ef4322d47d6c431fa.jpg', '2013-12-14 20:50:17', '2013-12-14 20:50:17'),
 (1, 'upload-8df17c77af23061ef4322d47d6c431fa94.jpg', 'upload-8df17c77af23061ef4322d47d6c431fa94.jpg', '2013-12-14 21:28:02', '2013-12-14 21:28:02'),
-(7, 'likes', '{"0":"42","1":"47","3":"48","4":"45"}', '2013-12-10 01:01:21', '2013-12-10 03:43:44'),
 (7, 'upload-dc0945a57cb219c782069b9f0095acf0.jpg', 'upload-dc0945a57cb219c782069b9f0095acf0.jpg', '2013-12-14 22:43:50', '2013-12-14 22:43:50');
 
 -- --------------------------------------------------------
