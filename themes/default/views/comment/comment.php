@@ -39,6 +39,32 @@
 				    <span class="reply">reply</span>
 				<?php endif; ?>
 				 • <span class="flag <?php echo $comment->approved == -1 ? 'flagged' : NULL; ?>" data-attr-id="<?php echo $comment->id; ?>"><?php echo $comment->approved == -1 ? 'flagged' : 'flag'; ?></span>
+					<span class="likes-container" style="position:absolute;padding-left:120px">		
+					<div style="float:left;position:absolute;right:0px" class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
+					    <div  style="position:absolute;right:60px;width:50px;top:-5px">
+						<a  onclick=testClick("like-count-<?php echo $comment->id; ?>"); style="cursor:pointer"   id="upvote" title="Like this post and discussion">
+							<span class="icon-thumbs-up icon-yellow"></span>
+							<span class="counter">
+					            <span style="font-family:arial;font-size:12px;font-weight:normal;color:#000000;background:none" id="like-count-<?php echo $comment->id; ?>">&nbsp;&nbsp;<?php echo $comment->like_count; ?> 
+								</span>
+					        </span> 	    	
+					             
+					    </a>&nbsp;&nbsp;
+						</div>
+						
+						<div style="position:absolute;right:0px;width:50px;top:-5px">
+						 <a  onclick=dislike("dislike-count-<?php echo $comment->id; ?>"); style="cursor:pointer"   id="upvote" title="Dislike this post and discussion">
+							<span class="icon-thumbs-down icon-red"></span>
+							<span class="counter">
+					            <span style="font-family:arial;font-size:12px;font-weight:normal;color:#000000" id="dislike-count-<?php echo $comment->id; ?>"><?php echo $comment->dislike_count; ?></span>
+					        </span> 
+					    	
+					             
+					    </a>
+						</div>
+						
+					</div>	
+					</span>			
 			<?php endif; ?>
 		</div>
 	</div>
@@ -124,4 +150,74 @@
 	        );
 	    });
 	});
+	
+function testClick(idVal){
+	//alert('test click');
+	//alert(idVal);
+	var id = idVal.split("-");		
+	var url = "/comment/like/id/"+id[2];
+	var idData = id[2];
+	//alert(idData);
+
+	$.post("/dwel1/comment/like/id/"+idData, function(data, textStatus, jqXHR) {
+	//alert(data.status);
+		if (data.status == undefined)
+			window.location = "<?php echo $this->createUrl('/login'); ?>"
+
+		if (data.status == "success")
+		{
+			var count = parseInt($("#"+idVal).text());
+			
+			
+			if (data.type == "inc"){
+				var j = $("#"+idVal);
+				var n = parseInt(j.text(), 10);
+				j.text(n + 1);			
+				//$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
+				}
+			else{
+				var j = $("#"+idVal);
+				var n = parseInt(j.text(), 10);
+				j.text(n - 1);
+				//$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
+				}
+		}
+	});
+	//break;
+	return false;					
+}
+
+function dislike(idVal){
+	//alert('test click');
+	//alert(idVal);
+	var id = idVal.split("-");		
+	var url = "/comment/dislike/id/"+id[2];
+	var idData = id[2];
+	//alert(idData);
+
+	$.post("/dwel1/comment/dislike/id/"+idData, function(data, textStatus, jqXHR) {
+	//alert(data.status);
+		if (data.status == undefined)
+			window.location = "<?php echo $this->createUrl('/login'); ?>"
+
+		if (data.status == "success")
+		{
+			var count = parseInt($("#"+idVal).text());
+			if (data.type == "inc"){
+			var j = $("#"+idVal);
+			var n = parseInt(j.text(), 10);
+			j.text(n + 1);
+			//$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
+				}
+			else{
+			var j = $("#"+idVal);
+			var n = parseInt(j.text(), 10);
+			j.text(n - 1);
+				//$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
+				}
+		}
+	});
+	//break;
+	return false;					
+}	
 </script>

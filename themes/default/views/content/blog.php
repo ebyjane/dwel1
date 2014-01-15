@@ -29,12 +29,12 @@
 				<h3 class="pull-left"><?php /*echo CHtml::link(CHtml::encode($content->title), Yii::app()->createUrl($content->slug));*/ ?></h3>
 				<div class="likes-container likes-container--topfix pull-right">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
-					    <a href="#" id="upvote" title="Like this post and discussion">
+					    <!--<a href="#" id="upvote" title="Like this post and discussion">
 					    	<span class="icon-thumbs-up icon-red"></span>
 					        <span class="counter">
 					            <span id="like-count"><?php echo $content->like_count; ?></span>
 					        </span>      
-					    </a>
+					    </a>-->
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -99,12 +99,12 @@
 				
 				<div class="likes-container pull-right">
 					<div class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
-					    <a href="#" id="upvote" title="Like this post and discussion">
+					    <!--<a href="#" id="upvote" title="Like this post and discussion">
 					    	<span class="icon-thumbs-up icon-red"></span>
 					        <span class="counter">
 					            <span id="like-count"><?php echo $content->like_count; ?></span>
 					        </span>      
-					    </a>
+					    </a>-->
 					</div>
 				</div>
 			</div>

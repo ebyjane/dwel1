@@ -3,11 +3,11 @@ function testClick(idVal){
 	//alert('test click');
 	//alert(idVal);
 	var id = idVal.split("-");		
-	var url = "/content/like/id/"+id[2];
+	var url = "/comment/like/id/"+id[2];
 	var idData = id[2];
 	//alert(idData);
 
-	$.post("/dwel1/content/like/id/"+idData, function(data, textStatus, jqXHR) {
+	$.post("/dwel1/comment/like/id/"+idData, function(data, textStatus, jqXHR) {
 	//alert(data.status);
 		if (data.status == undefined)
 			window.location = "<?php echo $this->createUrl('/login'); ?>"
@@ -16,11 +16,18 @@ function testClick(idVal){
 		{
 			var count = parseInt($("#"+idVal).text());
 			
+			
 			if (data.type == "inc"){
-				$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
+				var j = $("#"+idVal);
+				var n = parseInt(j.text(), 10);
+				j.text(n + 1);			
+				//$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
 				}
 			else{
-				$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
+				var j = $("#"+idVal);
+				var n = parseInt(j.text(), 10);
+				j.text(n - 1);
+				//$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
 				}
 		}
 	});
@@ -32,11 +39,11 @@ function dislike(idVal){
 	//alert('test click');
 	//alert(idVal);
 	var id = idVal.split("-");		
-	var url = "/content/dislike/id/"+id[2];
+	var url = "/comment/dislike/id/"+id[2];
 	var idData = id[2];
 	//alert(idData);
 
-	$.post("/dwel1/content/dislike/id/"+idData, function(data, textStatus, jqXHR) {
+	$.post("/dwel1/comment/dislike/id/"+idData, function(data, textStatus, jqXHR) {
 	//alert(data.status);
 		if (data.status == undefined)
 			window.location = "<?php echo $this->createUrl('/login'); ?>"
@@ -44,12 +51,17 @@ function dislike(idVal){
 		if (data.status == "success")
 		{
 			var count = parseInt($("#"+idVal).text());
-			
 			if (data.type == "inc"){
-				$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
+			var j = $("#"+idVal);
+			var n = parseInt(j.text(), 10);
+			j.text(n + 1);
+			//$("#"+idVal).text(count + 1).parent().parent().parent().addClass("liked");
 				}
 			else{
-				$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
+			var j = $("#"+idVal);
+			var n = parseInt(j.text(), 10);
+			j.text(n - 1);
+				//$("#"+idVal).text(count - 1).parent().parent().parent().removeClass("liked");
 				}
 		}
 	});
@@ -163,9 +175,9 @@ $this->renderPartial('//content/_post', array('content' => $content)); ?>
 		/*e.preventDefault();
 		var idVal = $(this).find("span").find("span").attr("id");
 		var id = idVal.split("-");		
-		var url = "/content/like/id/"+id[2];
+		var url = "/comment/like/id/"+id[2];
 
-		$.post("/dwel1/content/like/id/"+id[2], function(data, textStatus, jqXHR) {
+		$.post("/dwel1/comment/like/id/"+id[2], function(data, textStatus, jqXHR) {
 			if (data.status == undefined)
 				window.location = "' . $this->createUrl('/login') . '"
 

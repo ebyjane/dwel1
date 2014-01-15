@@ -150,4 +150,130 @@ class CommentController extends CiiController
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
+	
+	/**
+	 * Provides functionality for "liking and un-liking" a post
+	 * @param int $id		The Content ID
+	 */
+	public function actionLike($id=NULL)
+	{
+		$this->layout=false;
+		header('Content-type: application/json');
+		
+		// Load the content
+		$content = Comments::model()->findByPk($id);
+		if ($id === NULL || $content === NULL)
+		{
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to access post'));
+			return Yii::app()->end();
+		}
+		
+		// Load the user likes, create one if it does not exist
+		$user = UserMetadata::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'key' => 'likes'));
+		if ($user === NULL)
+		{
+			$user = new UserMetadata;
+			$user->user_id = Yii::app()->user->id;
+			$user->key = 'likes';
+			$user->value = json_encode(array());
+		}
+		
+		$type = "inc";
+		$likes = json_decode($user->value, true);
+		if (in_array($id, array_values($likes)))
+		{
+			$type = "dec";
+			$content->like_count -= 1;
+			if ($content->like_count <= 0)
+				$content->like_count = 0;
+			$element = array_search($id, $likes);
+			unset($likes[$element]);
+		}
+		else
+		{
+			$content->like_count += 1;
+			array_push($likes, $id);
+		}
+		
+		$user->value = json_encode($likes);
+		if (!$user->save())
+		{
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to save user like'));
+			return Yii::app()->end();
+		}
+
+		if (!$content->save())
+		{
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to save like'));
+			return Yii::app()->end();
+		}
+		
+		echo CJavaScript::jsonEncode(array('status' => 'success', 'type' => $type, 'message' => 'Liked saved'));
+		return Yii::app()->end();
+	}
+	
+/**
+	 * Provides functionality for "liking and un-liking" a post
+	 * @param int $id		The Content ID
+	 */
+	public function actionDislike($id=NULL)
+	{
+	
+
+		$this->layout=false;
+		header('Content-type: application/json');
+
+		// Load the content
+		$content = Comments::model()->findByPk($id);
+		
+		if ($id === NULL || $content === NULL)
+		{
+
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to access post'));
+			return Yii::app()->end();
+		}	
+		
+		// Load the user Dislike, create one if it does not exist
+		$user = UserMetadata::model()->findByAttributes(array('user_id' => Yii::app()->user->id, 'key' => 'Dislike'));
+		if ($user === NULL)
+		{
+			$user = new UserMetadata;
+			$user->user_id = Yii::app()->user->id;
+			$user->key = 'Dislike';
+			$user->value = json_encode(array());
+		}
+		
+		$type = "inc";
+		$likes = json_decode($user->value, true);
+		if (in_array($id, array_values($likes)))
+		{
+			$type = "dec";
+			$content->dislike_count -= 1;
+			if ($content->dislike_count <= 0)
+				$content->dislike_count = 0;
+			$element = array_search($id, $likes);
+			unset($likes[$element]);
+		}
+		else
+		{
+			$content->dislike_count += 1;
+			array_push($likes, $id);
+		}
+		
+		$user->value = json_encode($likes);
+		if (!$user->save())
+		{
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to save user dislike'));
+			return Yii::app()->end();
+		}
+
+		if (!$content->save())
+		{
+			echo CJavaScript::jsonEncode(array('status' => 'error', 'message' => 'Unable to save dislike'));
+			return Yii::app()->end();
+		}
+		
+		echo CJavaScript::jsonEncode(array('status' => 'success', 'type' => $type, 'message' => 'Dislike saved'));
+		return Yii::app()->end();
+	}		
 }
