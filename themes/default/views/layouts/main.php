@@ -55,10 +55,10 @@ font-size:11px;
 		<main class="main"><div class="container main-container"><div class="row-fluid main-body">
             <div class="large-12 small-12 columns social_wrap span12">
             	<ul>
-                	<li><a href="#" class="facebook" title="Facebook">Facebook</a></li>
-                    <li><a href="#" class="twitter" title="Twitter">Twitter</a></li>
-                    <li><a href="#" class="linkedin" title="Linkedin">Linkedin</a></li>
-                    <li class="last"><a href="#" class="gplus" title="Googleplus">Googleplus</a></li>            
+                	<li><a href="https://www.facebook.com/pages/Godwellingcom/241208609383565" class="facebook" title="Facebook" target="_blank">Facebook</a></li>
+                    <li><a href="https://twitter.com/GoDwellingWeb" class="twitter" title="Twitter" target="_blank">Twitter</a></li>
+                    <li><a href="http://www.linkedin.com/company/3592842?trk=tyah&trkInfo=tas%3Agodwe%2Cidx%3A1-1-1" class="linkedin" title="Linkedin" target="_blank">Linkedin</a></li>
+                    <li class="last"><a href="https://plus.google.com/u/1/b/111538487115466987695/111538487115466987695/posts" class="gplus" title="Googleplus" target="_blank">Googleplus</a></li>            
                 </ul>
             </div>
 			</div>

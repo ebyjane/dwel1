@@ -7,32 +7,38 @@ $this->breadcrumbs=array(
 );
 ?>
 
-	<div class="span8">
+	<div class="span12">
     	<div class="large-8 small-12 columns content-wrap">
-        	<div class="content-part advice-wrap">
-        		<form>
-                      <label>Contact Us</label>
-
+        	<div class="content-part contact-us">
+            	<h1>Please fill in the form to contact us</h1>
+            	<form action="" method="">
+                	<ul>
+                    	<li><label>Contact Godwelling</label>
+                        	<select>
+                        		<option>Support Team</option>
+                                <option>Business Development</option>
+                                <option>Press</option>
+                                <option>Advertising</option>
+                        	</select>
+                        </li>
+                        <li><label>Full Name</label>
+                        	<input type="text" />
+                        </li>
+                        <li><label>Your Email Address</label>
+                        	<input type="text" />
+                        </li>
+                        <li><label>Subject</label>
+                        	<input type="text" />
+                        </li>
+                        <li><label>Message</label>
+                        	<textarea></textarea>
+                        </li>
+                        <li class="btn-holder">
+                        	<input type="submit" value="Submit" class="btn btn-success" />
+                            <input type="reset" value="Reset" class="btn btn-default" />
+                        </li>
+                    </ul>
                 </form>
             </div>
-	</div>
-	</div>
-	<div class="span4 sidebar hidden-phone">
-		<div class="well">
-			<h4>Search</h4>
-			<?php echo CHtml::beginForm($this->createUrl('/search'), 'get', array('id' => 'search')); ?>
-                <div class="input-append">
-                    <?php echo CHtml::textField('q', Cii::get($_GET, 'q', ''), array('type' => 'text', 'style' => 'width: 97%', 'placeholder' => 'Type to search, then press enter')); ?>
-                </div>
-            <?php echo CHtml::endForm(); ?>
-		</div>
-        <div class="large-4 small-12 columns sidebar-wrap">
-        	<div class="sidebar">
-            	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/add1.jpg" style="margin-bottom:15px" />
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/add2.jpg" style="margin-bottom:15px" />
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/add3.jpg" style="margin-bottom:15px" />
-            </div>
-        </div>		
-		
-		
-	</div>
+        </div>
+    </div>
