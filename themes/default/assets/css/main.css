@@ -2081,7 +2081,7 @@ nav{
 .contact-us ul li label{
 	float: left;
     font-size: 16px;
-    margin-right: 15px;
+    margin-right: 20px;
     position: relative;
     text-align: right;
     top: 8px;
@@ -2104,4 +2104,30 @@ nav{
 }
 .contact-us ul li{
 	margin-bottom:20px;	
+}
+.contact-us.post-ads select{
+	cursor: pointer;
+    height: 40px;
+    padding: 8px;
+    width: 410px;	
+}
+.radio-group .first-radio{
+	float:left;
+	margin-right:80px;	
+}
+.radio-group span{
+	font-size: 16px;
+    margin-left: 5px;
+    position: relative;
+    top: 4px;	
+}
+.contact-us.post-ads .btn-holder{
+	text-align:left;
+	margin-left:19%;	
+}
+.contact-us.post-ads .btn.btn-success{
+	font-size: 18px;
+    margin-right: 20px;
+    margin-top: 5px;
+    padding: 6px 30px;	
 }

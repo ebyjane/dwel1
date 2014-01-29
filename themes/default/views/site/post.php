@@ -23,8 +23,10 @@ $this->breadcrumbs=array(
                             </select>
                         </li>
                         <li><label>Type of ad</label>
-                        	<input type="radio" /> Seller
-                            <input type="radio" /> Buyer
+                        	<div class="radio-group clearfix">
+                        		<div class="first-radio"><input type="radio" /> <span>Seller</span></div>
+                            	<div class="second-radio"><input type="radio" /> <span>Buyer</span></div>
+                            </div>
                         </li>
                         <li><label>Country</label>
                         	<input type="text" />
@@ -40,12 +42,17 @@ $this->breadcrumbs=array(
                         </li>
                         <li>
                         	<label>Condtion</label>
-                            <input type="radio" /> Used
-                            <input type="radio" /> New
+                            <div class="radio-group clearfix">
+                            <div class="first-radio"><input type="radio" /> <span>Used</span></div>
+                            <div class="second-radio"><input type="radio" /> <span>New</span></div>
+                            </div>
                         </li>
                         <li>
                         	<label>Photos for your ad</label>
-                        	<input type="button" value="Add Photo" />
+                            <button type="button" class="btn btn-default btn-lg">
+                              Add Photo
+                            </button>
+                            
                         </li>
                         <li>
                         	<label>Price</label>
@@ -60,8 +67,10 @@ $this->breadcrumbs=array(
                     <h3>User Information</h3>
                     <ul>
                     	<li><label>You are</label>
-                        	<input type="radio" /> Individual
-                            <input type="radio" /> Dealer
+                        	<div class="radio-group clearfix">
+                        	<div class="first-radio"><input type="radio" /> <span>Individual</span></div>
+                            <div class="second-radio"><input type="radio" /> <span>Dealer</span></div>
+                            </div>
                         </li>
                         <li><label>Name</label>
                         	<input type="text" />
@@ -75,7 +84,7 @@ $this->breadcrumbs=array(
                     </ul>
                     <div class="btn-holder">
                     	By clicking "Post", you agree to our Terms of Use & Privacy Policy.<br />
-                        <input type="submit" value="Post" />
+                        <input type="submit" value="Post" class="btn btn-success"/>
                     </div>
                 </form>
             </div>
