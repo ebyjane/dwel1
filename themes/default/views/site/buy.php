@@ -18,7 +18,7 @@ $this->breadcrumbs=array(
                         </form>
                     </div>
                     <div class="right-part">
-                    	<input type="button" class="post_btn" value="Post Free Ad" />
+						<a href="<?php echo Yii::app()->request->baseUrl; ?>/site/post" class="iframe"><input type="button" class="post_btn" value="Post Free Ad" /></a>                    	
                     </div>
                 </div>
                 <!-- header1 ends here -->

@@ -20,11 +20,12 @@ $meta = Content::model()->parseMeta($content->metadata); ?>
 							$id = $content->author->id;
 							$key = "blog-image";
 							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
+							$userDetails = Users::model()->findByAttributes(array('id' => $id));
 							//echo count($image_data);
 							if(count($image_data)>0){
-								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$content->author->id}/"));
 							}else{
-								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$content->author->id}/"));
 							}	
 	
 	?>
@@ -98,16 +99,31 @@ $meta = Content::model()->parseMeta($content->metadata); ?>
 							$key = "blog-image";
 							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
 							//echo count($image_data);
+							$userDetails = Users::model()->findByAttributes(array('id' => $id));
+							
 							if(count($image_data)>0){
-								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$id}/"));
 							}else{
-								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px',  'href' => "/dwel1/uploads/images.jpg", 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$id}/"));
 							}	
 	
 	?>
 	</div>				
 		<div class="comment-body">
-		    			    <p style="padding-bottom:5px"><?php echo $val['comment']; ?><br/><br/></p>
+		    			    <p style="padding-bottom:5px">
+				
+
+								<?php if ($val['id'] != 0): ?>
+												<span class="icon-share-alt"></span> <?php echo CHtml::encode($userDetails->displayName); ?>•
+								<?php endif; ?>
+								<time class="timeago" datetime="<?php echo date(DATE_ISO8601, strtotime($val['created'])); ?>">
+									<?php echo Cii::formatDate($val['created']); ?>
+								</time><br/>
+
+							
+							
+							
+							<?php echo $val['comment']; ?><br/><br/></p>
 								
 					<span class="likes-container" style="position:absolute;padding-left:150px">		
 					<div style="float:left;position:absolute;right:0px" class="likes <?php echo Yii::app()->user->isGuest ?: (Users::model()->findByPk(Yii::app()->user->id)->likesPost($content->id) ? 'liked' : NULL); ?>">     
@@ -131,7 +147,8 @@ $meta = Content::model()->parseMeta($content->metadata); ?>
 					    	
 					             
 					    </a>
-						</div>
+						</div>	
+						
 						
 					</div>	
 					</span>

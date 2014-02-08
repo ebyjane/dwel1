@@ -6,21 +6,26 @@
 							$id = $comment->user_id;
 							$key = "blog-image";
 							$image_data = UserMetadata::model()->findByAttributes(array('user_id' => $id, 'key' => $key));
-							//echo count($image_data);
+							
+							$userDetails = Users::model()->findByAttributes(array('id' => $id));
+							//echo $userDetails->displayName;
+							//exit();
 							if(count($image_data)>0){
-								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => "/dwel1/uploads/".$image_data->value)), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/".$image_data->value, NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/".$image_data->value, 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$id}/"));
 							}else{
-								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/images.jpg", 'title' => "/dwel1/uploads/images.jpg")), $this->createUrl("/profile/{$content->author->id}/"));
+								echo CHtml::link(CHtml::image("/dwel1/uploads/images.jpg", NULL, array('class'=> 'thumb', 'style' => 'width:30px;float:left',  'href' => "/dwel1/uploads/images.jpg", 'title' => $userDetails->displayName)), $this->createUrl("/profile/{$id}/"));
 							}	
 	
 	?>
 	<div class="<?php echo $comment->author->id == $comment->content->author->id ? 'green-indicator author-indicator' : NULL; ?>">
 		<div class="comment-body comment-byline">
-			<?php echo CHtml::encode($comment->author->name); ?>
+			<?php 
+			//print_r($comment);
+			echo CHtml::encode($comment->author->name); ?>
 			<?php if ($comment->parent_id != 0): ?>
 				<span class="icon-share-alt"></span> <?php echo CHtml::encode($comment->parent->author->name); ?> •
 			<?php else: ?>
-			 •
+			 <span class="icon-share-alt"></span> <?php echo CHtml::encode($comment->author->displayName); ?>•
 			<?php endif; ?>
 			<time class="timeago" datetime="<?php echo date(DATE_ISO8601, strtotime($comment->created)); ?>">
 				<?php echo Cii::formatDate($comment->created); ?>

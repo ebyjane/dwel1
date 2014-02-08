@@ -15,7 +15,7 @@
 					<?php if (!Yii::app()->user->isGuest): ?>
 						<div class="alert alert-info" style="margin-top: 20px;">
 						  	<button type="button" class="close" data-dismiss="alert">&times;</button>
-						  	<strong>Heads Up!</strong> Looks like you're already logged in as <strong><?php echo Yii::app()->user->email; ?></strong>. You should <strong><?php echo CHtml::link('logout', $this->createUrl('/logout')); ?></strong> before logging in to another account.
+						  	<strong>Heads Up!</strong> Looks like you're already logged in as <strong><?php echo Yii::app()->user->displayName; ?></strong>. You should <strong><?php echo CHtml::link('logout', $this->createUrl('/logout')); ?></strong> before logging in to another account.
 						</div>
 					<?php else: ?>
 						<?php if ($model->hasErrors()): ?>

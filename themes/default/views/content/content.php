@@ -1,4 +1,4 @@
-   <?php 		$content = array(); echo "we are here";
+   <?php 		$content = array(); 
 		$pages = array();
 		$itemCount = 0;
 		$pageSize = Cii::getConfig('contentPaginationSize', 1);	
@@ -20,7 +20,7 @@
 		//print_r($content);
 		?>
 		<?php foreach($data as $content): ?>
-		<?php $this->renderPartial('//content/_post', array('content' => $content)); ?>
+		<?php $this->renderPartial('/content/_post', array('content' => $content)); ?>
 
 		<?php endforeach; ?>
 

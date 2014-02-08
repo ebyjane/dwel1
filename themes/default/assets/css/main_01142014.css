@@ -23,9 +23,7 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-a{
-	outline:none;	
-}
+
 .icon-red {
 	background-image: url("../images/glyphicons-halflings-red.png");
 }
@@ -1312,8 +1310,8 @@ header ul li a.gplus:hover{
 }
 .logo{
 	background:url(../images/logo.png) no-repeat;
-	width:185px;
-	height:52px;
+	width:170px;
+	height:68px;
 	text-indent:-9999px;
 	display:block;	
 }
@@ -1942,192 +1940,4 @@ nav{
     font-weight: bold;
     margin: 10px 0 0;
 	width:75%;
-}
-.buy-sell .left-part{
-	float:left;
-	margin-right:20px;	
-}
-.buy-sell .left-part input[type="text"]{
-	min-height:auto;
-	width:400px;
-	border-radius:3px 0 0 3px;	
-}
-.search_btn{
-	background: #47CCDF;
-    border: 1px solid #0BCCDF;
-    color: #FFFFFF;
-    font-size: 16px;
-    padding: 8px 15px;
-	cursor:pointer;
-	transition:all 0.2s ease;
-	-webkit-transition:all 0.2s ease;
-	-moz-transition:all 0.2s ease;	
-}
-.search_btn:hover{
-	background:	#47C0CE;
-}
-.buy-sell .post_btn{
-	background: #72828f;
-	background: -moz-linear-gradient(top,  #72828f 0%, #1c2732 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#72828f), color-stop(100%,#1c2732));
-	background: -webkit-linear-gradient(top,  #72828f 0%,#1c2732 100%);
-	background: -o-linear-gradient(top,  #72828f 0%,#1c2732 100%);
-	background: -ms-linear-gradient(top,  #72828f 0%,#1c2732 100%);
-	background: linear-gradient(to bottom,  #72828f 0%,#1c2732 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#72828f', endColorstr='#1c2732',GradientType=0 );
-	color:#fff;
-	font-size:20px;
-	padding:6px 50px;
-	border:1px solid #001830;
-	text-shadow:0 1px 1px #eee;
-	cursor:pointer;	
-}
-.buy-sell .post_btn:hover{
-	background: #1c2732;
-	background: -moz-linear-gradient(top,  #1c2732 0%, #72828f 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c2732), color-stop(100%,#72828f));
-	background: -webkit-linear-gradient(top,  #1c2732 0%,#72828f 100%);
-	background: -o-linear-gradient(top,  #1c2732 0%,#72828f 100%);
-	background: -ms-linear-gradient(top,  #1c2732 0%,#72828f 100%);
-	background: linear-gradient(to bottom,  #1c2732 0%,#72828f 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c2732', endColorstr='#72828f',GradientType=0 );	
-}
-.header2{
-	background:#eee;
-	padding:18px 12px;
-	border:1px solid #ccc;
-	border-radius:3px;
-	margin-top:20px;	
-}
-.header2 h1{
-	color:#000;
-	font-size:28px;
-	margin-bottom:15px;
-	text-align:center;
-}
-.header2 select{
-	width:31%;
-	float:left;
-	padding:5px;
-	margin-right:23px;
-	height:35px;
-	cursor:pointer;	
-}
-.header2 select.last{
-	margin-right:0;	
-}
-.btn_holder{
-	margin-top:15px;
-	text-align:center;	
-}
-.search_btn.submit_btn{
-	padding:6px 25px;
-	border-radius:3px;	
-}
-.category-section{
-	margin-top:20px;	
-}
-.category-section h2{
-	font-size:24px;
-	margin-bottom:15px;	
-}
-
-.category-section .category-wrap h3{
-	font-size:18px;
-	color:#00a9ec;
-	margin:0;
-	font-weight:normal;	
-}
-.category-section .category-wrap ul{
-	float:left;
-	width:45%;	
-}
-.category-section .category-wrap ul li{
-	margin-bottom:10px;
-	list-style:disc;
-	color:#555;	
-}
-.category-section .category-wrap ul li a{
-	font-size:14px;
-	color:#555;	
-}
-.category-section .category-wrap ul li a:hover{
-	color:#0088CC;	
-}
-.terms-service h1, .contact-us h1{
-	font-size:26px;
-	border-bottom:1px solid #47CCDF;
-	color:#47CCDF;
-	margin-bottom:10px;	
-}
-.terms-service h2{
-	font-size:18px;	
-}
-.terms-service h3{
-	font-size:16px;	
-}
-.terms-service p, .terms-service ul li{
-	font-size:14px;
-	line-height:22px;	
-}
-.terms-service ul li{
-	list-style:disc;
-	margin:0 0 8px 10px;	
-}
-.contact-us ul{
-	width:75%;
-	margin-top:15px;	
-}
-.contact-us ul li label{
-	float: left;
-    font-size: 16px;
-    margin-right: 20px;
-    position: relative;
-    text-align: right;
-    top: 8px;
-    width: 20%;
-}
-.contact-us input[type="text"], .contact-us textarea{
-	width:400px;	
-}
-.contact-us select{
-	min-height: 40px;
-    width: 410px;
-	cursor:pointer;	
-}
-.contact-us .btn-holder{
-	text-align:center;
-	width:80%;	
-}
-.contact-us .btn.btn-success{
-	margin-right:20px;	
-}
-.contact-us ul li{
-	margin-bottom:20px;	
-}
-.contact-us.post-ads select{
-	cursor: pointer;
-    height: 40px;
-    padding: 8px;
-    width: 410px;	
-}
-.radio-group .first-radio{
-	float:left;
-	margin-right:80px;	
-}
-.radio-group span{
-	font-size: 16px;
-    margin-left: 5px;
-    position: relative;
-    top: 4px;	
-}
-.contact-us.post-ads .btn-holder{
-	text-align:left;
-	margin-left:19%;	
-}
-.contact-us.post-ads .btn.btn-success{
-	font-size: 18px;
-    margin-right: 20px;
-    margin-top: 5px;
-    padding: 6px 30px;	
 }

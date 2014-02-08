@@ -1,4 +1,5 @@
-<?php $this->beginContent('//layouts/main'); ?>
+<?php 
+$this->beginContent('//layouts/main'); ?>
 	<div class="span8">
 		<?php echo $content; ?>
 	</div>

@@ -210,8 +210,6 @@ if (Yii::app()->request->isPostRequest)
 	
 	public function actionUpload($id)
 	{
-	echo "we are here";
-	exit();
 		if (Yii::app()->request->isPostRequest)
 		{
 			Yii::import("ext.EAjaxUpload.qqFileUploader");
