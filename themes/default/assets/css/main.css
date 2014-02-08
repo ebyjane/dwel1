@@ -27,11 +27,11 @@ a{
 	outline:none;	
 }
 .icon-red {
-	background-image: url("../images/glyphicons-halflings-red.png");
+	background-image: url("../images/glyphicons-halflings.png");
 }
 
 .icon-yellow {
-	background-image: url("../images/glyphicons-halflings-red.png");
+	background-image: url("../images/glyphicons-halflings.png");
 }
 
 input[type="text"], input[type="password"] {
